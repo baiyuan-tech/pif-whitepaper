@@ -38,10 +38,9 @@ pdf-engine-opts:
 
 header-includes:
   - \usepackage{xeCJK}
-  # Load TC variant from TTC by FaceIndex (same rationale as zh-TW metadata).
-  - \setCJKmainfont[Path=/usr/share/fonts/opentype/noto/,Extension=.ttc,FaceIndex=3,BoldFont=NotoSerifCJK-Bold:FaceIndex=3]{NotoSerifCJK-Regular}
-  - \setCJKsansfont[Path=/usr/share/fonts/opentype/noto/,Extension=.ttc,FaceIndex=3,BoldFont=NotoSansCJK-Bold:FaceIndex=3]{NotoSansCJK-Regular}
-  - \setCJKmonofont[Path=/usr/share/fonts/opentype/noto/,Extension=.ttc,FaceIndex=3]{NotoSansMonoCJK-Regular}
+  - "\\setCJKmainfont{NotoSerifCJK-Regular.ttc}[Path=/usr/share/fonts/opentype/noto/,UprightFeatures={FaceIndex=3},BoldFont=NotoSerifCJK-Bold.ttc,BoldFeatures={FaceIndex=3}]"
+  - "\\setCJKsansfont{NotoSansCJK-Regular.ttc}[Path=/usr/share/fonts/opentype/noto/,UprightFeatures={FaceIndex=3},BoldFont=NotoSansCJK-Bold.ttc,BoldFeatures={FaceIndex=3}]"
+  - "\\setCJKmonofont{NotoSansMonoCJK-Regular.ttc}[Path=/usr/share/fonts/opentype/noto/,UprightFeatures={FaceIndex=3},BoldFont=NotoSansMonoCJK-Bold.ttc,BoldFeatures={FaceIndex=3}]"
   - \usepackage{fancyhdr}
   - \usepackage{lastpage}
   - \pagestyle{fancy}
