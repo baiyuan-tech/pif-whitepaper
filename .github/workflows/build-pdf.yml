@@ -48,9 +48,14 @@ jobs:
             fonts-noto-cjk-extra \
             librsvg2-bin \
             python3
-          # Hard-assert Noto CJK fonts present (PDF will not compile without them)
-          fc-list | grep -q "Noto Serif CJK TC" || { echo "::error::Noto Serif CJK TC not installed"; exit 1; }
-          fc-list | grep -q "Noto Sans CJK TC"  || { echo "::error::Noto Sans CJK TC not installed";  exit 1; }
+          # Hard-assert Noto CJK TC OTFs present (we load by explicit path, not via fontconfig).
+          ls /usr/share/fonts/opentype/noto/NotoSerifCJKtc-Regular.otf \
+             /usr/share/fonts/opentype/noto/NotoSerifCJKtc-Bold.otf \
+             /usr/share/fonts/opentype/noto/NotoSansCJKtc-Regular.otf \
+             /usr/share/fonts/opentype/noto/NotoSansCJKtc-Bold.otf \
+             /usr/share/fonts/opentype/noto/NotoSansMonoCJKtc-Regular.otf \
+             || { echo "::error::Noto CJK TC OTF files missing — install fonts-noto-cjk-extra"; exit 1; }
+          echo "✓ Noto CJK TC OTF files present"
 
       - name: Concatenate chapters
         run: |

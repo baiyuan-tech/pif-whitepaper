@@ -38,9 +38,11 @@ pdf-engine-opts:
 
 header-includes:
   - \usepackage{xeCJK}
-  - \setCJKmainfont[ItalicFont={Noto Serif CJK TC},BoldFont={Noto Serif CJK TC Bold}]{Noto Serif CJK TC}
-  - \setCJKsansfont[BoldFont={Noto Sans CJK TC Bold}]{Noto Sans CJK TC}
-  - \setCJKmonofont{Noto Sans Mono CJK TC}
+  # Explicit TC OTF files to avoid JP fallback even in EN edition
+  # (EN content contains quoted Chinese regulatory text).
+  - \setCJKmainfont[Path=/usr/share/fonts/opentype/noto/,Extension=.otf,BoldFont=NotoSerifCJKtc-Bold,ItalicFont=NotoSerifCJKtc-Regular]{NotoSerifCJKtc-Regular}
+  - \setCJKsansfont[Path=/usr/share/fonts/opentype/noto/,Extension=.otf,BoldFont=NotoSansCJKtc-Bold]{NotoSansCJKtc-Regular}
+  - \setCJKmonofont[Path=/usr/share/fonts/opentype/noto/,Extension=.otf,BoldFont=NotoSansMonoCJKtc-Bold]{NotoSansMonoCJKtc-Regular}
   - \usepackage{fancyhdr}
   - \usepackage{lastpage}
   - \pagestyle{fancy}
