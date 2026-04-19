@@ -41,9 +41,13 @@ pdf-engine-opts:
   - "-interaction=nonstopmode"
   - "-halt-on-error"
 
-# Custom header
+# Custom header — runs AFTER pandoc's auto ctexhook, so explicit \setCJKmainfont
+# here overrides the JP default that fontconfig picks on Ubuntu 24.04.
 header-includes:
   - \usepackage{xeCJK}
+  - \setCJKmainfont[ItalicFont={Noto Serif CJK TC},BoldFont={Noto Serif CJK TC Bold}]{Noto Serif CJK TC}
+  - \setCJKsansfont[BoldFont={Noto Sans CJK TC Bold}]{Noto Sans CJK TC}
+  - \setCJKmonofont{Noto Sans Mono CJK TC}
   - \usepackage{fancyhdr}
   - \usepackage{lastpage}
   - \pagestyle{fancy}
