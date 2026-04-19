@@ -1,69 +1,33 @@
 ---
 # Pandoc metadata for Traditional Chinese PDF build.
-# Used by `.github/workflows/build-pdf.yml`.
+# Aligned with baiyuan-tech/geo-whitepaper: fonts set via -V CLI flags in
+# build-pdf.yml, header-includes kept minimal for fancyhdr / tcolorbox only.
 
 title: "PIF AI 技術白皮書"
 subtitle: "多租戶 AI 輔助化粧品 PIF 建檔平台"
-author: "Vincent Lin（Baiyuan Tech）"
+author: "Vincent Lin（百原科技）"
 date: "2026-04-19"
-lang: zh-TW
 
-# Typography
-mainfont: "Noto Serif CJK TC"
-sansfont: "Noto Sans CJK TC"
-monofont: "Noto Sans Mono CJK TC"
-CJKmainfont: "Noto Serif CJK TC"
-CJKsansfont: "Noto Sans CJK TC"
-CJKmonofont: "Noto Sans Mono CJK TC"
+# lang: zh-Hant-TW (not zh-TW) avoids Pandoc auto-loading the ctex hook that
+# defaults to Simplified Chinese font variants; we explicitly force TC below
+# by passing -V CJKmainfont="Noto Serif CJK TC" on the command line.
+lang: zh-Hant-TW
 
-# Page layout
-documentclass: report
-papersize: a4
-geometry:
-  - margin=2.5cm
-  - top=2.5cm
-  - bottom=2.5cm
-linestretch: 1.4
-fontsize: 11pt
+# Override Pandoc's auto-localized strings (which may default to SC glyphs)
+# with explicit Traditional Chinese forms.
+toc-title: "目錄"
+abstract-title: "摘要"
+reference-section-title: "參考資料"
+lof-title: "圖目錄"
+lot-title: "表目錄"
 
-# TOC
-toc: true
-toc-depth: 3
-numbersections: true
-colorlinks: true
-linkcolor: "RoyalBlue"
-urlcolor: "RoyalBlue"
-toccolor: "black"
-
-# Pandoc extensions
-pdf-engine: xelatex
-pdf-engine-opts:
-  - "-interaction=nonstopmode"
-  - "-halt-on-error"
-
-# Custom header — runs AFTER pandoc's auto ctexhook, so explicit \setCJKmainfont
-# here overrides the JP default that fontconfig picks on Ubuntu 24.04.
-header-includes: |
-  \usepackage{xeCJK}
-  % TC variant from combined TTC (FaceIndex=3: JP=0, KR=1, SC=2, TC=3, HK=4).
-  \setCJKmainfont[Path=/usr/share/fonts/opentype/noto/,UprightFeatures={FaceIndex=3},BoldFont=NotoSerifCJK-Bold.ttc,BoldFeatures={FaceIndex=3}]{NotoSerifCJK-Regular.ttc}
-  \setCJKsansfont[Path=/usr/share/fonts/opentype/noto/,UprightFeatures={FaceIndex=3},BoldFont=NotoSansCJK-Bold.ttc,BoldFeatures={FaceIndex=3}]{NotoSansCJK-Regular.ttc}
-  \setCJKmonofont[Path=/usr/share/fonts/opentype/noto/,UprightFeatures={FaceIndex=3},BoldFont=NotoSansMonoCJK-Bold.ttc,BoldFeatures={FaceIndex=3}]{NotoSansMonoCJK-Regular.ttc}
-  \usepackage{fancyhdr}
-  \usepackage{lastpage}
-  \pagestyle{fancy}
-  \fancyhf{}
-  \fancyhead[L]{PIF AI 技術白皮書}
-  \fancyhead[R]{v0.1 · 2026-04}
-  \fancyfoot[C]{\thepage\ /\ \pageref{LastPage}}
-  \usepackage[most]{tcolorbox}
-
-# Frontmatter
+# Abstract
 abstract: |
-  本文件為 PIF AI 多租戶 AI 輔助化粧品 PIF 建檔平台的技術白皮書。
-  涵蓋法規背景、系統架構、AI 引擎（基於 Anthropic Claude 與 Claude Code 開發）、
-  毒理資料 Pipeline、中心 RAG 整合（方案 C+ 隔離模型）、安全模型、
-  SA 審閱工作流程，以及開源與部署策略。
+  本文件為 PIF AI 多租戶 AI 輔助化粧品 PIF 建檔平台的技術白皮書。涵蓋台灣
+  《化粧品衛生安全管理法》法規背景、系統架構、AI 引擎（以 Anthropic Claude
+  與 Claude Code 開發）、毒理資料 Pipeline、中心 RAG 整合（方案 C+ 隔離模型
+  採 L1 LLM Wiki + L2 向量 RAG 雙層檢索）、安全模型、SA 審閱工作流程，以及
+  開源與部署策略。全文約 80,000 繁體中文字 + 15 張 Mermaid 圖表。
 
 keywords:
   - PIF
@@ -74,3 +38,18 @@ keywords:
   - 毒理分析
   - TFDA
   - 中心 RAG
+  - L1 Wiki
+  - L2 RAG
+
+rights: "Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)"
+
+# Minimal header-includes — just fancyhdr + tcolorbox. Fonts are passed via CLI.
+header-includes: |
+  \usepackage{fancyhdr}
+  \usepackage{lastpage}
+  \pagestyle{fancy}
+  \fancyhf{}
+  \fancyhead[L]{PIF AI 技術白皮書}
+  \fancyhead[R]{v0.1 · 2026-04}
+  \fancyfoot[C]{\thepage\ /\ \pageref{LastPage}}
+  \usepackage[most]{tcolorbox}
