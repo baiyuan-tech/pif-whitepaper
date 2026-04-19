@@ -1,0 +1,50 @@
+// markdownlint config for PIF AI Whitepaper.
+// Rules aligned with the sibling baiyuan-tech/geo-whitepaper project.
+{
+  // Default rules enabled; listed overrides below.
+  "default": true,
+
+  // MD003 — heading style: ATX only (`#`, not underline)
+  "MD003": { "style": "atx" },
+
+  // MD004 — unordered list bullet style: dash
+  "MD004": { "style": "dash" },
+
+  // MD007 — unordered list indent: 2 spaces
+  "MD007": { "indent": 2 },
+
+  // MD013 — line length: soft 120, hard 200 (CJK forgiving)
+  "MD013": {
+    "line_length": 200,
+    "code_blocks": false,
+    "tables": false,
+    "headings": false
+  },
+
+  // MD024 — duplicate headings allowed if nested under different parent
+  "MD024": { "siblings_only": true },
+
+  // MD025 — single H1 per file (chapter title)
+  "MD025": { "front_matter_title": "^\\s*title\\s*[:=]" },
+
+  // MD033 — allow inline HTML (needed for <details>, JSON-LD comments)
+  "MD033": false,
+
+  // MD036 — don't flag emphasized paragraphs (CJK headings sometimes need it)
+  "MD036": false,
+
+  // MD041 — first line need not be H1 (YAML frontmatter comes first)
+  "MD041": false,
+
+  // MD045 — image alt text required
+  "MD045": true,
+
+  // MD046 — code block style: fenced
+  "MD046": { "style": "fenced" },
+
+  // MD049 — emphasis style: underscores for _italic_
+  "MD049": { "style": "underscore" },
+
+  // MD050 — strong style: asterisks for **bold**
+  "MD050": { "style": "asterisk" }
+}

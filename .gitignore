@@ -1,0 +1,31 @@
+# Generated artifacts (built by CI; committed only at release)
+/whitepaper-*.md
+/whitepaper-*.pdf
+/docs/whitepaper/whitepaper-*.md
+/docs/whitepaper/whitepaper-*.pdf
+
+# Pandoc build logs
+pandoc-*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Node (for any Mermaid tooling)
+node_modules/
+package-lock.json
+
+# Python (for preprocess scripts)
+__pycache__/
+*.pyc
+
+# Secrets / local env
+.env
+.env.local
+
+# Certbot / SSL debris
+*.pem
+*.key

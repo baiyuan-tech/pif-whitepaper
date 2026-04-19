@@ -1,0 +1,59 @@
+cff-version: 1.2.0
+message: >-
+  If you use this whitepaper in academic or industry publications, please cite
+  it as below. For the underlying software citation, see the companion code
+  repository at https://github.com/baiyuan-tech/pif.
+title: >-
+  PIF AI Whitepaper: A Multi-Tenant AI-Assisted Platform for Cosmetic
+  Product Information File Documentation Under Taiwan's Cosmetic Hygiene
+  and Safety Act
+abstract: >-
+  Technical whitepaper describing PIF AI, an open-source multi-tenant SaaS
+  platform that uses Anthropic Claude (via the Claude API and developed
+  with Claude Code), automated toxicology database queries
+  (PubChem, TFDA restricted/prohibited lists, ECHA, OECD), and a central
+  RAG service to reduce Taiwan-regulated cosmetic Product Information File
+  (PIF) documentation from 4–8 weeks to 3–5 business days, with an online
+  Safety Assessor (SA) review and electronic signature workflow. Covers
+  regulatory background, system architecture, AI engine design, toxicology
+  pipeline, the RAG isolation model (Scheme C+), security threat model,
+  SA workflow, deployment, and open-source strategy.
+type: article
+authors:
+  - family-names: Lin
+    given-names: Vincent
+    email: vincent.lin@baiyuan.com.tw
+    affiliation: Baiyuan Tech
+repository-code: "https://github.com/baiyuan-tech/pif-whitepaper"
+url: "https://github.com/baiyuan-tech/pif-whitepaper"
+license: CC-BY-NC-4.0
+keywords:
+  - PIF
+  - cosmetic
+  - Product Information File
+  - regulatory compliance
+  - toxicology
+  - RAG
+  - multi-tenant SaaS
+  - Anthropic Claude
+  - Claude Code
+  - TFDA
+  - ECHA
+  - PubChem
+  - Taiwan
+version: "0.1"
+date-released: "2026-04-19"
+preferred-citation:
+  type: article
+  title: >-
+    PIF AI: A Multi-Tenant AI-Assisted Platform for Accelerating Cosmetic
+    Product Information File Documentation Under Taiwan Cosmetic Hygiene
+    and Safety Act
+  authors:
+    - family-names: Lin
+      given-names: Vincent
+      email: vincent.lin@baiyuan.com.tw
+      affiliation: Baiyuan Tech
+  year: 2026
+  month: 4
+  url: "https://github.com/baiyuan-tech/pif-whitepaper"

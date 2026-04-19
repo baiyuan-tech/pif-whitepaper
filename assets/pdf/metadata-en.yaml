@@ -1,0 +1,67 @@
+---
+# Pandoc metadata for English PDF build.
+
+title: "PIF AI Whitepaper"
+subtitle: "A Multi-Tenant AI-Assisted Platform for Cosmetic PIF Documentation"
+author: "Vincent Lin (Baiyuan Tech)"
+date: "2026-04-19"
+lang: en
+
+mainfont: "Noto Serif CJK TC"
+sansfont: "Noto Sans CJK TC"
+monofont: "Noto Sans Mono CJK TC"
+CJKmainfont: "Noto Serif CJK TC"
+CJKsansfont: "Noto Sans CJK TC"
+CJKmonofont: "Noto Sans Mono CJK TC"
+
+documentclass: report
+papersize: a4
+geometry:
+  - margin=2.5cm
+  - top=2.5cm
+  - bottom=2.5cm
+linestretch: 1.4
+fontsize: 11pt
+
+toc: true
+toc-depth: 3
+numbersections: true
+colorlinks: true
+linkcolor: "RoyalBlue"
+urlcolor: "RoyalBlue"
+toccolor: "black"
+
+pdf-engine: xelatex
+pdf-engine-opts:
+  - "-interaction=nonstopmode"
+  - "-halt-on-error"
+
+header-includes:
+  - \usepackage{xeCJK}
+  - \usepackage{fancyhdr}
+  - \usepackage{lastpage}
+  - \pagestyle{fancy}
+  - \fancyhf{}
+  - \fancyhead[L]{PIF AI Whitepaper}
+  - \fancyhead[R]{v0.1 · 2026-04}
+  - \fancyfoot[C]{\thepage\ /\ \pageref{LastPage}}
+  - \usepackage[most]{tcolorbox}
+
+abstract: |
+  Technical whitepaper of the PIF AI multi-tenant platform for AI-assisted
+  Cosmetic Product Information File (PIF) documentation under Taiwan's
+  Cosmetic Hygiene and Safety Act. Covers regulatory background, system
+  architecture, the AI engine (built with Anthropic Claude and Claude Code),
+  toxicology data pipeline, the central RAG integration (Scheme C+ isolation
+  model), security model, SA review workflow, and the open-source and
+  deployment strategies.
+
+keywords:
+  - PIF
+  - cosmetic
+  - Claude
+  - Claude Code
+  - multi-tenant SaaS
+  - toxicology
+  - TFDA
+  - central RAG
