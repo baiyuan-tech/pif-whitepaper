@@ -48,14 +48,15 @@ jobs:
             fonts-noto-cjk-extra \
             librsvg2-bin \
             python3
-          # Hard-assert Noto CJK TC OTFs present (we load by explicit path, not via fontconfig).
-          ls /usr/share/fonts/opentype/noto/NotoSerifCJKtc-Regular.otf \
-             /usr/share/fonts/opentype/noto/NotoSerifCJKtc-Bold.otf \
-             /usr/share/fonts/opentype/noto/NotoSansCJKtc-Regular.otf \
-             /usr/share/fonts/opentype/noto/NotoSansCJKtc-Bold.otf \
-             /usr/share/fonts/opentype/noto/NotoSansMonoCJKtc-Regular.otf \
-             || { echo "::error::Noto CJK TC OTF files missing — install fonts-noto-cjk-extra"; exit 1; }
-          echo "✓ Noto CJK TC OTF files present"
+          # Diagnostic: show what fonts are actually installed
+          echo "=== /usr/share/fonts/opentype/noto/ ==="
+          ls /usr/share/fonts/opentype/noto/ 2>/dev/null | head -20
+          echo "=== fc-list for Noto CJK TC ==="
+          fc-list :lang=zh-tw | head -10
+          echo "=== fc-match Noto Serif CJK TC ==="
+          fc-match "Noto Serif CJK TC"
+          echo "=== fc-match Noto Sans CJK TC ==="
+          fc-match "Noto Sans CJK TC"
 
       - name: Concatenate chapters
         run: |

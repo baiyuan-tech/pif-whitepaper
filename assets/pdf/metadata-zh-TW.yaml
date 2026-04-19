@@ -45,11 +45,12 @@ pdf-engine-opts:
 # here overrides the JP default that fontconfig picks on Ubuntu 24.04.
 header-includes:
   - \usepackage{xeCJK}
-  # Load TC variant OTFs by explicit path to bypass fontconfig misresolution
-  # (Ubuntu 24.04 maps "Noto Serif CJK" family to the JP variant by default).
-  - \setCJKmainfont[Path=/usr/share/fonts/opentype/noto/,Extension=.otf,BoldFont=NotoSerifCJKtc-Bold,ItalicFont=NotoSerifCJKtc-Regular]{NotoSerifCJKtc-Regular}
-  - \setCJKsansfont[Path=/usr/share/fonts/opentype/noto/,Extension=.otf,BoldFont=NotoSansCJKtc-Bold]{NotoSansCJKtc-Regular}
-  - \setCJKmonofont[Path=/usr/share/fonts/opentype/noto/,Extension=.otf,BoldFont=NotoSansMonoCJKtc-Bold]{NotoSansMonoCJKtc-Regular}
+  # Load TC variant from the combined TTC by FaceIndex.
+  # In NotoSerifCJK-Regular.ttc the subfamily order is: JP=0, KR=1, SC=2, TC=3, HK=4
+  # (verified via otfinfo -l). FaceIndex must match for both Regular and Bold TTC files.
+  - \setCJKmainfont[Path=/usr/share/fonts/opentype/noto/,Extension=.ttc,FaceIndex=3,BoldFont=NotoSerifCJK-Bold:FaceIndex=3]{NotoSerifCJK-Regular}
+  - \setCJKsansfont[Path=/usr/share/fonts/opentype/noto/,Extension=.ttc,FaceIndex=3,BoldFont=NotoSansCJK-Bold:FaceIndex=3]{NotoSansCJK-Regular}
+  - \setCJKmonofont[Path=/usr/share/fonts/opentype/noto/,Extension=.ttc,FaceIndex=3]{NotoSansMonoCJK-Regular}
   - \usepackage{fancyhdr}
   - \usepackage{lastpage}
   - \pagestyle{fancy}

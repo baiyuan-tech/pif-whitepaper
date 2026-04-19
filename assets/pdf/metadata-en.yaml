@@ -38,11 +38,10 @@ pdf-engine-opts:
 
 header-includes:
   - \usepackage{xeCJK}
-  # Explicit TC OTF files to avoid JP fallback even in EN edition
-  # (EN content contains quoted Chinese regulatory text).
-  - \setCJKmainfont[Path=/usr/share/fonts/opentype/noto/,Extension=.otf,BoldFont=NotoSerifCJKtc-Bold,ItalicFont=NotoSerifCJKtc-Regular]{NotoSerifCJKtc-Regular}
-  - \setCJKsansfont[Path=/usr/share/fonts/opentype/noto/,Extension=.otf,BoldFont=NotoSansCJKtc-Bold]{NotoSansCJKtc-Regular}
-  - \setCJKmonofont[Path=/usr/share/fonts/opentype/noto/,Extension=.otf,BoldFont=NotoSansMonoCJKtc-Bold]{NotoSansMonoCJKtc-Regular}
+  # Load TC variant from TTC by FaceIndex (same rationale as zh-TW metadata).
+  - \setCJKmainfont[Path=/usr/share/fonts/opentype/noto/,Extension=.ttc,FaceIndex=3,BoldFont=NotoSerifCJK-Bold:FaceIndex=3]{NotoSerifCJK-Regular}
+  - \setCJKsansfont[Path=/usr/share/fonts/opentype/noto/,Extension=.ttc,FaceIndex=3,BoldFont=NotoSansCJK-Bold:FaceIndex=3]{NotoSansCJK-Regular}
+  - \setCJKmonofont[Path=/usr/share/fonts/opentype/noto/,Extension=.ttc,FaceIndex=3]{NotoSansMonoCJK-Regular}
   - \usepackage{fancyhdr}
   - \usepackage{lastpage}
   - \pagestyle{fancy}
