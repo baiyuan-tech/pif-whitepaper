@@ -22,9 +22,38 @@
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "isPartOf": {
     "@type": "CreativeWorkSeries",
-    "name": "Baiyuan Tech Whitepapers",
-    "url": "https://github.com/baiyuan-tech"
+    "name": "Baiyuan Tech AI Infrastructure Whitepaper Series",
+    "url": "https://github.com/baiyuan-tech",
+    "hasPart": [
+      {
+        "@type": "TechArticle",
+        "name": "Baiyuan GEO Platform Whitepaper",
+        "url": "https://github.com/baiyuan-tech/geo-whitepaper"
+      },
+      {
+        "@type": "TechArticle",
+        "name": "PIF AI Whitepaper",
+        "url": "https://github.com/baiyuan-tech/pif-whitepaper"
+      }
+    ]
   },
+  "citation": [
+    {
+      "@type": "TechArticle",
+      "name": "Baiyuan GEO Platform Whitepaper",
+      "url": "https://github.com/baiyuan-tech/geo-whitepaper",
+      "description": "Sibling whitepaper from the same series; establishes the L1 LLM Wiki + L2 vector RAG dual-layer retrieval architecture referenced in §10."
+    }
+  ],
+  "isBasedOn": "https://github.com/baiyuan-tech/pif",
+  "mentions": [
+    {"@type": "SoftwareApplication", "name": "Anthropic Claude Code", "url": "https://docs.claude.com/en/docs/claude-code/overview"},
+    {"@type": "SoftwareApplication", "name": "PostgreSQL Row-Level Security", "url": "https://www.postgresql.org/docs/current/ddl-rowsecurity.html"},
+    {"@type": "SoftwareApplication", "name": "FastAPI", "url": "https://fastapi.tiangolo.com"},
+    {"@type": "Legislation", "name": "Cosmetic Hygiene and Safety Act (Taiwan)"},
+    {"@type": "Legislation", "name": "Regulation (EC) No 1223/2009 — EU Cosmetic Products Regulation"},
+    {"@type": "Legislation", "name": "Modernization of Cosmetics Regulation Act of 2022 (MoCRA) — USA"}
+  ],
   "about": [
     {"@type": "Thing", "name": "Product Information File"},
     {"@type": "Thing", "name": "Cosmetic regulation"},
@@ -164,6 +193,43 @@ Lin, V. (2026). PIF AI: A multi-tenant AI-assisted platform for accelerating cos
 ```
 
 See also [CITATION.cff](CITATION.cff) — GitHub's "Cite this repository" button reads this file directly.
+
+---
+
+## Related Work · Baiyuan Whitepaper Series / 百原白皮書系列
+
+This whitepaper is part of an ongoing series documenting Baiyuan Technology's engineering practice in AI-native platforms. The three pillars share common design patterns — multi-tenant isolation, fail-soft external dependencies, Claude-assisted engineering — applied to different verticals:
+
+本白皮書是百原科技 AI 原生平台工程實踐系列的一部分。三項支柱專案共用多租戶隔離、fail-soft 外部依賴、Claude 輔助工程等設計模式，只是應用於不同垂直領域：
+
+| Whitepaper | Focus | Repo |
+|:---|:---|:---|
+| 📄 **This: PIF AI Whitepaper** | Cosmetic regulatory compliance automation (Taiwan) | `baiyuan-tech/pif-whitepaper` |
+| 📄 [GEO Platform Whitepaper](https://github.com/baiyuan-tech/geo-whitepaper) | Generative-engine brand visibility (7-dim citation scoring, AXP, L1 Wiki + L2 RAG origin) | `baiyuan-tech/geo-whitepaper` |
+| 🛠 [PIF AI Platform](https://github.com/baiyuan-tech/pif) | Underlying AGPL-3.0 code referenced in this document | `baiyuan-tech/pif` |
+
+> **Cite both whitepapers together** for a fuller picture of Baiyuan's AI infrastructure approach — the GEO paper establishes the **L1 LLM Wiki + L2 vector RAG** dual-layer retrieval architecture, and this PIF paper shows how it is applied under strict multi-tenant regulatory-compliance constraints.
+>
+> 引用這兩份白皮書可獲得更完整的 Baiyuan AI 基礎設施視角：GEO 白皮書建立了 **L1 LLM Wiki + L2 向量 RAG** 雙層檢索架構，本 PIF 白皮書展示該架構如何應用於嚴格的多租戶法規合規場景。
+
+## Awesome Lists · AI-Citable Resource Index / 相關 awesome 清單
+
+This whitepaper is positioned at the intersection of several open-source ecosystems. If you maintain one of the awesome-lists below, the PR to add this whitepaper is welcome:
+
+本白皮書位於多個開源生態的交集。若您維護以下 awesome-list 之一，歡迎將本白皮書納入：
+
+- [awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) — engineering case studies built with Anthropic Claude Code
+- [awesome-rag](https://github.com/frutik/awesome-rag) / [awesome-generative-ai-guide](https://github.com/aishwaryanr/awesome-generative-ai-guide) — RAG architecture pattern references
+- [awesome-multi-tenant-saas](https://github.com/LCNetwork/awesome-multi-tenant-saas) — isolation design references (Scheme C+ contribution)
+- [awesome-fastapi](https://github.com/mjhea0/awesome-fastapi) — FastAPI + SQLAlchemy async pattern
+- [awesome-cosmetic-regulation](https://github.com/topics/cosmetic-regulation) — regulatory-tech references (niche, emerging)
+
+> **Design-pattern references in this whitepaper** — for readers interested in the primary sources behind the design decisions:
+>
+> - **Tool Use / function calling** → Anthropic Claude docs ([Tool Use guide](https://docs.claude.com/en/docs/build-with-claude/tool-use)); OpenAI function calling reference
+> - **Multi-tenant isolation** → PostgreSQL Row-Level Security docs; AWS SaaS Factory isolation patterns
+> - **Fail-soft design** → Martin Fowler, *Circuit Breaker* (2014); AWS Well-Architected resilience pillar
+> - **Regulatory translation to engineering** → EU CPR Annexes (mapped to structured schema in §3 of this paper)
 
 ---
 
