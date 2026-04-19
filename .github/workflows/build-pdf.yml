@@ -40,7 +40,9 @@ jobs:
             texlive-xetex \
             texlive-lang-cjk \
             texlive-fonts-recommended \
+            texlive-latex-recommended \
             texlive-latex-extra \
+            lmodern \
             fonts-noto-cjk \
             fonts-noto-cjk-extra \
             librsvg2-bin \
