@@ -36,19 +36,19 @@ pdf-engine-opts:
   - "-interaction=nonstopmode"
   - "-halt-on-error"
 
-header-includes:
-  - \usepackage{xeCJK}
-  - "\\setCJKmainfont{NotoSerifCJK-Regular.ttc}[Path=/usr/share/fonts/opentype/noto/,UprightFeatures={FaceIndex=3},BoldFont=NotoSerifCJK-Bold.ttc,BoldFeatures={FaceIndex=3}]"
-  - "\\setCJKsansfont{NotoSansCJK-Regular.ttc}[Path=/usr/share/fonts/opentype/noto/,UprightFeatures={FaceIndex=3},BoldFont=NotoSansCJK-Bold.ttc,BoldFeatures={FaceIndex=3}]"
-  - "\\setCJKmonofont{NotoSansMonoCJK-Regular.ttc}[Path=/usr/share/fonts/opentype/noto/,UprightFeatures={FaceIndex=3},BoldFont=NotoSansMonoCJK-Bold.ttc,BoldFeatures={FaceIndex=3}]"
-  - \usepackage{fancyhdr}
-  - \usepackage{lastpage}
-  - \pagestyle{fancy}
-  - \fancyhf{}
-  - \fancyhead[L]{PIF AI Whitepaper}
-  - \fancyhead[R]{v0.1 · 2026-04}
-  - \fancyfoot[C]{\thepage\ /\ \pageref{LastPage}}
-  - \usepackage[most]{tcolorbox}
+header-includes: |
+  \usepackage{xeCJK}
+  \setCJKmainfont[Path=/usr/share/fonts/opentype/noto/,UprightFeatures={FaceIndex=3},BoldFont=NotoSerifCJK-Bold.ttc,BoldFeatures={FaceIndex=3}]{NotoSerifCJK-Regular.ttc}
+  \setCJKsansfont[Path=/usr/share/fonts/opentype/noto/,UprightFeatures={FaceIndex=3},BoldFont=NotoSansCJK-Bold.ttc,BoldFeatures={FaceIndex=3}]{NotoSansCJK-Regular.ttc}
+  \setCJKmonofont[Path=/usr/share/fonts/opentype/noto/,UprightFeatures={FaceIndex=3},BoldFont=NotoSansMonoCJK-Bold.ttc,BoldFeatures={FaceIndex=3}]{NotoSansMonoCJK-Regular.ttc}
+  \usepackage{fancyhdr}
+  \usepackage{lastpage}
+  \pagestyle{fancy}
+  \fancyhf{}
+  \fancyhead[L]{PIF AI Whitepaper}
+  \fancyhead[R]{v0.1 · 2026-04}
+  \fancyfoot[C]{\thepage\ /\ \pageref{LastPage}}
+  \usepackage[most]{tcolorbox}
 
 abstract: |
   Technical whitepaper of the PIF AI multi-tenant platform for AI-assisted

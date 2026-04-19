@@ -43,22 +43,20 @@ pdf-engine-opts:
 
 # Custom header — runs AFTER pandoc's auto ctexhook, so explicit \setCJKmainfont
 # here overrides the JP default that fontconfig picks on Ubuntu 24.04.
-header-includes:
-  - \usepackage{xeCJK}
-  # Load TC variant from combined TTC. TC is at FaceIndex=3 in both Regular and Bold TTCs
-  # (JP=0, KR=1, SC=2, TC=3, HK=4 — verified via otfinfo).
-  # Use UprightFeatures / BoldFeatures to pass FaceIndex per variant (correct fontspec syntax).
-  - "\\setCJKmainfont{NotoSerifCJK-Regular.ttc}[Path=/usr/share/fonts/opentype/noto/,UprightFeatures={FaceIndex=3},BoldFont=NotoSerifCJK-Bold.ttc,BoldFeatures={FaceIndex=3}]"
-  - "\\setCJKsansfont{NotoSansCJK-Regular.ttc}[Path=/usr/share/fonts/opentype/noto/,UprightFeatures={FaceIndex=3},BoldFont=NotoSansCJK-Bold.ttc,BoldFeatures={FaceIndex=3}]"
-  - "\\setCJKmonofont{NotoSansMonoCJK-Regular.ttc}[Path=/usr/share/fonts/opentype/noto/,UprightFeatures={FaceIndex=3},BoldFont=NotoSansMonoCJK-Bold.ttc,BoldFeatures={FaceIndex=3}]"
-  - \usepackage{fancyhdr}
-  - \usepackage{lastpage}
-  - \pagestyle{fancy}
-  - \fancyhf{}
-  - \fancyhead[L]{PIF AI 技術白皮書}
-  - \fancyhead[R]{v0.1 · 2026-04}
-  - \fancyfoot[C]{\thepage\ /\ \pageref{LastPage}}
-  - \usepackage[most]{tcolorbox}
+header-includes: |
+  \usepackage{xeCJK}
+  % TC variant from combined TTC (FaceIndex=3: JP=0, KR=1, SC=2, TC=3, HK=4).
+  \setCJKmainfont[Path=/usr/share/fonts/opentype/noto/,UprightFeatures={FaceIndex=3},BoldFont=NotoSerifCJK-Bold.ttc,BoldFeatures={FaceIndex=3}]{NotoSerifCJK-Regular.ttc}
+  \setCJKsansfont[Path=/usr/share/fonts/opentype/noto/,UprightFeatures={FaceIndex=3},BoldFont=NotoSansCJK-Bold.ttc,BoldFeatures={FaceIndex=3}]{NotoSansCJK-Regular.ttc}
+  \setCJKmonofont[Path=/usr/share/fonts/opentype/noto/,UprightFeatures={FaceIndex=3},BoldFont=NotoSansMonoCJK-Bold.ttc,BoldFeatures={FaceIndex=3}]{NotoSansMonoCJK-Regular.ttc}
+  \usepackage{fancyhdr}
+  \usepackage{lastpage}
+  \pagestyle{fancy}
+  \fancyhf{}
+  \fancyhead[L]{PIF AI 技術白皮書}
+  \fancyhead[R]{v0.1 · 2026-04}
+  \fancyfoot[C]{\thepage\ /\ \pageref{LastPage}}
+  \usepackage[most]{tcolorbox}
 
 # Frontmatter
 abstract: |
