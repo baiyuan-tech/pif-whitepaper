@@ -4,11 +4,15 @@ on:
   push:
     branches: [master]
     paths:
-      - "docs/whitepaper/**"
+      - "zh-TW/**"
+      - "en/**"
+      - "assets/pdf/**"
       - ".github/workflows/build-pdf.yml"
   pull_request:
     paths:
-      - "docs/whitepaper/**"
+      - "zh-TW/**"
+      - "en/**"
+      - "assets/pdf/**"
       - ".github/workflows/build-pdf.yml"
   release:
     types: [published]
@@ -46,7 +50,6 @@ jobs:
           fc-list | grep -q "Noto Sans CJK TC"  || { echo "::error::Noto Sans CJK TC not installed";  exit 1; }
 
       - name: Concatenate chapters
-        working-directory: docs/whitepaper
         run: |
           bash assets/pdf/concat.sh ${{ matrix.lang }} > whitepaper-${{ matrix.lang }}.md
           echo "=== Concatenated size ==="
@@ -54,7 +57,6 @@ jobs:
           wc -c whitepaper-${{ matrix.lang }}.md
 
       - name: Preprocess for XeLaTeX (strip mermaid, emoji, variation selectors)
-        working-directory: docs/whitepaper
         run: |
           python3 <<'PY'
           import re, pathlib
@@ -85,7 +87,6 @@ jobs:
           PY
 
       - name: Run Pandoc → PDF
-        working-directory: docs/whitepaper
         id: pandoc
         run: |
           set +e
@@ -115,9 +116,9 @@ jobs:
         with:
           name: whitepaper-${{ matrix.lang }}
           path: |
-            docs/whitepaper/whitepaper-${{ matrix.lang }}.pdf
-            docs/whitepaper/whitepaper-${{ matrix.lang }}.md
-            docs/whitepaper/pandoc-${{ matrix.lang }}.log
+            whitepaper-${{ matrix.lang }}.pdf
+            whitepaper-${{ matrix.lang }}.md
+            pandoc-${{ matrix.lang }}.log
           if-no-files-found: warn
           retention-days: 90
 
@@ -125,4 +126,4 @@ jobs:
         if: github.event_name == 'release'
         uses: softprops/action-gh-release@v2
         with:
-          files: docs/whitepaper/whitepaper-${{ matrix.lang }}.pdf
+          files: whitepaper-${{ matrix.lang }}.pdf
