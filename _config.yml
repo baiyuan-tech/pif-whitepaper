@@ -1,0 +1,84 @@
+# Jekyll config for GitHub Pages — https://baiyuan-tech.github.io/pif-whitepaper/
+#
+# Scope: minimal config to enable jekyll-sitemap + jekyll-seo-tag.
+# The default Cayman theme renders Markdown cleanly enough for a whitepaper repo.
+
+title: "PIF AI Whitepaper"
+description: >-
+  Technical whitepaper on a multi-tenant AI-assisted Cosmetic Product
+  Information File (PIF) documentation platform under Taiwan's Cosmetic
+  Hygiene and Safety Act. Covers Scheme C+ multi-tenant isolation,
+  L1 LLM Wiki + L2 vector RAG dual-layer retrieval, the 5-column
+  regulation-to-engineering mapping method, and a case study of
+  full-stack development with Anthropic Claude Code.
+url: "https://baiyuan-tech.github.io"
+baseurl: "/pif-whitepaper"
+lang: zh-Hant-TW
+
+# Author metadata surfaced by jekyll-seo-tag into <meta> and JSON-LD.
+author:
+  name: Vincent Lin
+  email: services@baiyuan.io
+
+# Organization info referenced by jekyll-seo-tag.
+social:
+  name: Baiyuan Technology
+  links:
+    - https://baiyuan.io
+    - https://pif.baiyuan.io
+    - https://www.linkedin.com/company/112980572
+    - https://github.com/baiyuan-tech
+
+# Plugins allowed on GitHub Pages (safe mode).
+# Reference: https://pages.github.com/versions/
+plugins:
+  - jekyll-sitemap       # auto-generates /sitemap.xml from .md files
+  - jekyll-seo-tag       # injects OG + Twitter + JSON-LD metadata
+  - jekyll-feed          # /feed.xml for RSS readers
+  - jekyll-redirect-from
+
+# Files/dirs excluded from the generated site (stay in repo, not published).
+exclude:
+  - CITATION.cff
+  - LICENSE
+  - FORMAT.md
+  - Gemfile
+  - Gemfile.lock
+  - .github
+  - .markdownlint.jsonc
+  - .lycheeignore
+  - .gitignore
+  - assets/pdf          # PDF build scripts — not part of the published site
+  - node_modules
+  - vendor
+  - '*.pdf'
+
+# Sitemap hints via frontmatter defaults.
+defaults:
+  # assets/figures/*.mmd and binaries should not appear in sitemap
+  - scope:
+      path: "assets"
+    values:
+      sitemap: false
+  # Google Search Console verification file — must stay reachable at its
+  # canonical URL for verification, but shouldn't be in sitemap.xml.
+  - scope:
+      path: "google*.html"
+    values:
+      sitemap: false
+  # IndexNow key file (Bing / Yandex / Seznam / DuckDuckGo) — same rationale.
+  - scope:
+      path: "[a-f0-9]*.txt"
+    values:
+      sitemap: false
+
+# Markdown engine
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  auto_ids: true
+  toc_levels: 2..4
+
+# Permalink — keep paths close to source file structure.
+permalink: /:path/:basename:output_ext
