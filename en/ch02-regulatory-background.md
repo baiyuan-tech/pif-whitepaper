@@ -14,7 +14,9 @@ keywords:
   - "Article 8"
 word_count: approx 2000
 last_updated: 2026-04-19
+last_modified_at: '2026-04-19T21:19:43+08:00'
 ---
+
 
 # Chapter 2: Regulatory Background — Taiwan Cosmetic PIF
 

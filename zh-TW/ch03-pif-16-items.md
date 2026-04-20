@@ -14,7 +14,9 @@ keywords:
   - "安全評估"
 word_count: approx 2700
 last_updated: 2026-04-19
+last_modified_at: '2026-04-19T21:19:43+08:00'
 ---
+
 
 # 第 3 章：PIF 16 項深度解析
 
