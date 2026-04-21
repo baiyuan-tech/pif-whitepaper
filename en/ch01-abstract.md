@@ -12,8 +12,9 @@ keywords:
   - "multi-tenant SaaS"
 word_count: approx 2000
 last_updated: 2026-04-19
-last_modified_at: '2026-04-19T21:19:43+08:00'
+last_modified_at: '2026-04-20T09:07:50Z'
 ---
+
 
 
 # Chapter 1: Abstract and Core Propositions
