@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Root / Index -->
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- ── zh-TW ── -->
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch01-abstract.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch01-abstract.html"/>
+    <xhtml:link rel="alternate" hreflang="en"          href="https://baiyuan-tech.github.io/pif-whitepaper/en/ch01-abstract.html"/>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch02-regulatory-background.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch02-regulatory-background.html"/>
+    <xhtml:link rel="alternate" hreflang="en"          href="https://baiyuan-tech.github.io/pif-whitepaper/en/ch02-regulatory-background.html"/>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch03-pif-16-items.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch03-pif-16-items.html"/>
+    <xhtml:link rel="alternate" hreflang="en"          href="https://baiyuan-tech.github.io/pif-whitepaper/en/ch03-pif-16-items.html"/>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch04-system-architecture.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch04-system-architecture.html"/>
+    <xhtml:link rel="alternate" hreflang="en"          href="https://baiyuan-tech.github.io/pif-whitepaper/en/ch04-system-architecture.html"/>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch05-frontend-stack.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch05-frontend-stack.html"/>
+    <xhtml:link rel="alternate" hreflang="en"          href="https://baiyuan-tech.github.io/pif-whitepaper/en/ch05-frontend-stack.html"/>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch06-backend-stack.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch06-backend-stack.html"/>
+    <xhtml:link rel="alternate" hreflang="en"          href="https://baiyuan-tech.github.io/pif-whitepaper/en/ch06-backend-stack.html"/>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch07-ai-engine.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch07-ai-engine.html"/>
+    <xhtml:link rel="alternate" hreflang="en"          href="https://baiyuan-tech.github.io/pif-whitepaper/en/ch07-ai-engine.html"/>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch08-multi-tenancy.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch08-multi-tenancy.html"/>
+    <xhtml:link rel="alternate" hreflang="en"          href="https://baiyuan-tech.github.io/pif-whitepaper/en/ch08-multi-tenancy.html"/>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch09-toxicology-pipeline.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch09-toxicology-pipeline.html"/>
+    <xhtml:link rel="alternate" hreflang="en"          href="https://baiyuan-tech.github.io/pif-whitepaper/en/ch09-toxicology-pipeline.html"/>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch10-central-rag.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch10-central-rag.html"/>
+    <xhtml:link rel="alternate" hreflang="en"          href="https://baiyuan-tech.github.io/pif-whitepaper/en/ch10-central-rag.html"/>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch11-security-model.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch11-security-model.html"/>
+    <xhtml:link rel="alternate" hreflang="en"          href="https://baiyuan-tech.github.io/pif-whitepaper/en/ch11-security-model.html"/>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch12-roadmap-deployment-opensource.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch12-roadmap-deployment-opensource.html"/>
+    <xhtml:link rel="alternate" hreflang="en"          href="https://baiyuan-tech.github.io/pif-whitepaper/en/ch12-roadmap-deployment-opensource.html"/>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/appendix-a-glossary.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/appendix-b-api-endpoints.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/appendix-c-references.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/appendix-d-changelog.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- ── en ── -->
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/en/ch01-abstract.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/en/ch02-regulatory-background.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/en/ch03-pif-16-items.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/en/ch04-system-architecture.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/en/ch05-frontend-stack.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/en/ch06-backend-stack.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/en/ch07-ai-engine.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/en/ch08-multi-tenancy.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/en/ch09-toxicology-pipeline.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/en/ch10-central-rag.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/en/ch11-security-model.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/en/ch12-roadmap-deployment-opensource.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/en/appendix-a-glossary.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/en/appendix-b-api-endpoints.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/en/appendix-c-references.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://baiyuan-tech.github.io/pif-whitepaper/en/appendix-d-changelog.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>
