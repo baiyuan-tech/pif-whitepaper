@@ -66,7 +66,7 @@
 </script>
 -->
 
-# PIF AI Whitepaper / 技術白皮書
+# 百原 PIF AI Whitepaper / 技術白皮書
 
 > **多租戶 AI 輔助化粧品 PIF 建檔平台**
 >
