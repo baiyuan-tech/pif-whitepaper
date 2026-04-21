@@ -66,12 +66,11 @@
 </script>
 -->
 
-<div align="center">
-
 # PIF AI Whitepaper / 技術白皮書
 
-**多租戶 AI 輔助化粧品 PIF 建檔平台**
-**Multi-Tenant AI-Assisted Cosmetic Product Information File Documentation Platform**
+> **多租戶 AI 輔助化粧品 PIF 建檔平台**
+>
+> *Multi-Tenant AI-Assisted Cosmetic Product Information File Documentation Platform*
 
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/license-CC%20BY--NC%204.0-lightgrey.svg)](LICENSE)
 [![Status: Draft v0.1](https://img.shields.io/badge/status-draft%20v0.1-orange.svg)](#version)
@@ -81,8 +80,6 @@
 [![Live Platform](https://img.shields.io/badge/live-pif.baiyuan.io-brightgreen.svg)](https://pif.baiyuan.io)
 
 [📄 中文白皮書](zh-TW/) · [📄 English Whitepaper](en/) · [📋 Format Spec](FORMAT.md) · [💻 Code Repo](https://github.com/baiyuan-tech/pif)
-
-</div>
 
 ---
 
@@ -315,10 +312,8 @@ Errata, translations, and chapter contributions are welcomed. See [FORMAT.md](FO
 
 ---
 
-<div align="center">
+---
 
 **© 2026 Baiyuan Tech · Released under CC BY-NC 4.0**
 
 [📄 Read in Chinese ›](zh-TW/) · [📄 Read in English ›](en/)
-
-</div>
