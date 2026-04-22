@@ -170,8 +170,10 @@ jobs:
           if-no-files-found: warn
           retention-days: 90
 
-      - name: Attach PDF to release
-        if: github.event_name == 'release'
+      - name: Attach PDF to v0.1-draft release
+        if: (github.event_name == 'release' || github.ref == 'refs/heads/master') && success()
         uses: softprops/action-gh-release@v3
         with:
+          tag_name: v0.1-draft
           files: whitepaper-${{ matrix.lang }}.pdf
+          fail_on_unmatched_files: true
