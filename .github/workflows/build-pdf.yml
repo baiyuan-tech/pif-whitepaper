@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Install XeLaTeX + CJK fonts + Pandoc
         run: |
@@ -89,6 +89,8 @@ jobs:
               return any(lo <= cp <= hi for lo, hi in emoji_ranges)
           text = ''.join('' if is_emoji(ord(c)) else c for c in text)
           text = text.replace('\uFE0F', '').replace('\uFE0E', '').replace('\u200D', '')
+          # Body font (lmroman10) lacks these glyphs — substitute ASCII fallbacks for PDF
+          text = text.replace('\u2194', ' <-> ').replace('\u2260', ' != ')
 
           open(p, 'w', encoding='utf-8').write(text)
           print(f'[preprocess] {len(text)} chars after cleanup')
@@ -158,7 +160,7 @@ jobs:
 
       - name: Upload artifacts
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: whitepaper-${{ matrix.lang }}
           path: |
@@ -170,6 +172,6 @@ jobs:
 
       - name: Attach PDF to release
         if: github.event_name == 'release'
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           files: whitepaper-${{ matrix.lang }}.pdf
