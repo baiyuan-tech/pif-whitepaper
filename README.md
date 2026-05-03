@@ -74,7 +74,7 @@
 
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/license-CC%20BY--NC%204.0-lightgrey.svg)](LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19994788.svg)](https://doi.org/10.5281/zenodo.19994788)
-[![Software DOI](https://img.shields.io/badge/software%20DOI-10.5281%2Fzenodo.19994853-blue.svg)](https://doi.org/10.5281/zenodo.19994853)
+[![Software DOI](https://img.shields.io/badge/software%20DOI-10.5281%2Fzenodo.19995057-blue.svg)](https://doi.org/10.5281/zenodo.19995057)
 [![Status: v0.2.3](https://img.shields.io/badge/status-v0.2.3-blue.svg)](#version)
 [![zh-TW](https://img.shields.io/badge/lang-zh--TW-red.svg)](zh-TW/)
 [![en](https://img.shields.io/badge/lang-en-blue.svg)](en/)
@@ -294,7 +294,7 @@ pif-whitepaper/
 | v0.2 | 2026-04-30 | Added Chapter 13 — Compliance Engine Deep Dive (Phase 22-23): lifecycle 5 stages, business-type responsibility matrix (4×16=64 cells), 14 cross-item lint rules R1-R14, V0-V3 version snapshots with SHA-256 fingerprints, penalty mapping (§22-25), 14-page regulatory PDF generation. Appendix B adds 14 new endpoints. |
 | v0.2.1 | 2026-05-03 | Zenodo registration trigger (content identical to v0.2). |
 | v0.2.2 | 2026-05-03 | Bake Zenodo DOI [10.5281/zenodo.19994788](https://doi.org/10.5281/zenodo.19994788) into CITATION.cff + README badges + APA/BibTeX citation strings. |
-| v0.2.3 | 2026-05-03 | Bidirectional cross-citation: add companion software DOI [10.5281/zenodo.19994853](https://doi.org/10.5281/zenodo.19994853) (`VincentLinB/pif`) to CITATION.cff `references:` block + README software DOI badge. |
+| v0.2.3 | 2026-05-03 | Bidirectional cross-citation: add companion software DOI [10.5281/zenodo.19995057](https://doi.org/10.5281/zenodo.19995057) (`VincentLinB/pif`) to CITATION.cff `references:` block + README software DOI badge. |
 
 ---
 
