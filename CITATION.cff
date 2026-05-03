@@ -41,13 +41,26 @@ keywords:
   - ECHA
   - PubChem
   - Taiwan
-version: "0.2.2"
+version: "0.2.3"
 date-released: "2026-05-03"
 doi: "10.5281/zenodo.19994788"
 identifiers:
   - type: doi
     value: "10.5281/zenodo.19994788"
-    description: "Zenodo concept DOI (resolves to the latest version)"
+    description: "Zenodo concept DOI for this whitepaper (resolves to the latest version)"
+references:
+  - type: software
+    title: "PIF AI: Cosmetic Product Information File AI Documentation System"
+    authors:
+      - family-names: Lin
+        given-names: Vincent
+        email: vincent.lin@baiyuan.com.tw
+        affiliation: Baiyuan Tech
+    year: 2026
+    doi: "10.5281/zenodo.19994853"
+    url: "https://github.com/VincentLinB/pif"
+    repository-code: "https://github.com/VincentLinB/pif"
+    license: AGPL-3.0-or-later
 preferred-citation:
   type: article
   title: >-
@@ -61,6 +74,6 @@ preferred-citation:
       affiliation: Baiyuan Tech
   year: 2026
   month: 5
-  version: "0.2.2"
+  version: "0.2.3"
   doi: "10.5281/zenodo.19994788"
   url: "https://github.com/baiyuan-tech/pif-whitepaper"
