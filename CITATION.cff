@@ -41,8 +41,13 @@ keywords:
   - ECHA
   - PubChem
   - Taiwan
-version: "0.2.1"
+version: "0.2.2"
 date-released: "2026-05-03"
+doi: "10.5281/zenodo.19994788"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.19994788"
+    description: "Zenodo concept DOI (resolves to the latest version)"
 preferred-citation:
   type: article
   title: >-
@@ -56,5 +61,6 @@ preferred-citation:
       affiliation: Baiyuan Tech
   year: 2026
   month: 5
-  version: "0.2.1"
+  version: "0.2.2"
+  doi: "10.5281/zenodo.19994788"
   url: "https://github.com/baiyuan-tech/pif-whitepaper"

@@ -73,7 +73,8 @@
 > *Multi-Tenant AI-Assisted Cosmetic Product Information File Documentation Platform*
 
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/license-CC%20BY--NC%204.0-lightgrey.svg)](LICENSE)
-[![Status: v0.2](https://img.shields.io/badge/status-v0.2-blue.svg)](#version)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19994788.svg)](https://doi.org/10.5281/zenodo.19994788)
+[![Status: v0.2.2](https://img.shields.io/badge/status-v0.2.2-blue.svg)](#version)
 [![zh-TW](https://img.shields.io/badge/lang-zh--TW-red.svg)](zh-TW/)
 [![en](https://img.shields.io/badge/lang-en-blue.svg)](en/)
 [![Built with Claude Code](https://img.shields.io/badge/built%20with-Claude%20Code-6B46C1.svg)](https://docs.claude.com/en/docs/claude-code/overview)
@@ -168,8 +169,8 @@ Engineering details on how Claude Code contributed appear in §7 (AI Engine) and
 ```
 Lin, V. (2026). PIF AI: A multi-tenant AI-assisted platform for accelerating cosmetic
   product information file documentation under Taiwan Cosmetic Hygiene and Safety Act
-  (Whitepaper v0.2). Baiyuan Tech.
-  https://github.com/baiyuan-tech/pif-whitepaper
+  (Whitepaper v0.2.2). Baiyuan Tech.
+  https://doi.org/10.5281/zenodo.19994788
 ```
 
 ### BibTeX
@@ -182,10 +183,11 @@ Lin, V. (2026). PIF AI: A multi-tenant AI-assisted platform for accelerating cos
                  Cosmetic Hygiene and Safety Act},
   institution = {Baiyuan Tech},
   type        = {Whitepaper},
-  number      = {v0.2},
+  number      = {v0.2.2},
   year        = {2026},
-  month       = {apr},
-  url         = {https://github.com/baiyuan-tech/pif-whitepaper}
+  month       = {may},
+  doi         = {10.5281/zenodo.19994788},
+  url         = {https://doi.org/10.5281/zenodo.19994788}
 }
 ```
 
@@ -289,6 +291,8 @@ pif-whitepaper/
 |:---:|:---:|---|
 | v0.1 | 2026-04-19 | First public draft — covers MVP (Phase 1) and Phase 2 designs for Central RAG and SA e-signature |
 | v0.2 | 2026-04-30 | Added Chapter 13 — Compliance Engine Deep Dive (Phase 22-23): lifecycle 5 stages, business-type responsibility matrix (4×16=64 cells), 14 cross-item lint rules R1-R14, V0-V3 version snapshots with SHA-256 fingerprints, penalty mapping (§22-25), 14-page regulatory PDF generation. Appendix B adds 14 new endpoints. |
+| v0.2.1 | 2026-05-03 | Zenodo registration trigger (content identical to v0.2). |
+| v0.2.2 | 2026-05-03 | Bake Zenodo DOI [10.5281/zenodo.19994788](https://doi.org/10.5281/zenodo.19994788) into CITATION.cff + README badges + APA/BibTeX citation strings. |
 
 ---
 
