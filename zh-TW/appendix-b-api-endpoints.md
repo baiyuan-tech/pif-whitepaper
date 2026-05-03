@@ -105,6 +105,51 @@ last_modified_at: '2026-04-21T15:55:42Z'
 | POST | `/api/v1/chemical-sync/echa` | 同步 ECHA C&L | super_admin |
 | GET | `/api/v1/chemical-sync/status` | 同步狀態 | super_admin |
 
+### B.1.9 PIF 合規引擎（Phase 22–23）
+
+> 詳見第 13 章。涵蓋業者類型責任矩陣、7 步驟工作流、V0–V3 版本快照、變更偵測、跨 Item lint、合規 PDF 產出。全部需 JWT + `require_plan_access`。
+
+#### 責任歸屬矩陣（Phase 22A）
+
+| 方法 | 路徑 | 說明 |
+|:---:|------|------|
+| GET | `/api/v1/pif/responsibility-matrix?org_type=brand\|oem\|importer\|consultant` | 通用責任矩陣（4 業者類型 × 16 項，64 格） |
+| GET | `/api/v1/products/{id}/pif-responsibilities` | 自動依 `product.org.type` 帶出對應業者類型之 16 項責任配置 |
+
+#### 7 步驟工作流與委外（Phase 22B）
+
+| 方法 | 路徑 | 說明 |
+|:---:|------|------|
+| GET | `/api/v1/products/{id}/pif-workflow` | 7 步驟工作流自動推導（含 outsourcing_suggestions） |
+| GET | `/api/v1/products/{id}/outsourcings` | 列出已登錄之委外項目 |
+| POST | `/api/v1/products/{id}/outsourcings` | 新增委外（`item_number` + `vendor` + `note`） |
+| DELETE | `/api/v1/products/{id}/outsourcings/{id}` | 移除委外 |
+
+#### V0–V3 版本快照（Phase 22C / 22E / 23C）
+
+| 方法 | 路徑 | 說明 |
+|:---:|------|------|
+| POST | `/api/v1/products/{id}/pif-versions/snapshot` | 建立當下 16 項狀態之快照（V0/V1/V2/V3） |
+| GET | `/api/v1/products/{id}/pif-versions` | 列出所有歷史快照 |
+| GET | `/api/v1/products/{id}/pif-versions/expiring` | 文件時效聚合（GMP / 試驗報告 / §12 通報倒數） |
+| GET | `/api/v1/products/{id}/pif-versions/change-detection` | 比對 fingerprints；回傳 `needs_resign` + `suggested_next_version` |
+| POST | `/api/v1/products/{id}/pif-versions/auto-draft` | 一鍵建立 V2/V3 草案（unsigned） |
+
+#### 跨 Item lint（Phase 22D / 23A / 23B）
+
+| 方法 | 路徑 | 說明 |
+|:---:|------|------|
+| GET | `/api/v1/products/{id}/cross-item-lint` | 執行 14 條規則（R1–R14），回傳 alerts + 罰則對照（§22–§25 罰鍰範圍） |
+
+#### 合規 PIF PDF（Phase 23E）
+
+| 方法 | 路徑 | 說明 |
+|:---:|------|------|
+| GET | `/api/v1/products/{id}/pif-versions/regulatory-pdf` | 產出當下 PIF 14 頁合規 PDF（即時計算 lint） |
+| GET | `/api/v1/products/{id}/pif-versions/{snapshot_id}/regulatory-pdf` | 產出指定 V0/V1/V2/V3 快照之 PDF（從 `items_snapshot` 還原） |
+
+回應 `Content-Disposition` 採 RFC 5987 雙標頭支援中文檔名。
+
 ## B.2 前端 BFF (Next.js API Routes, `/api/*`)
 
 | 方法 | 路徑 | 說明 |

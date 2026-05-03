@@ -105,6 +105,51 @@ All require JWT + `require_plan_access`.
 | POST | `/api/v1/chemical-sync/echa` | Sync ECHA C&L | super_admin |
 | GET | `/api/v1/chemical-sync/status` | Sync status | super_admin |
 
+### B.1.9 PIF Compliance Engine (Phase 22–23)
+
+> See Chapter 13. Covers business-type responsibility matrix, 7-step workflow, V0–V3 version snapshots, change detection, cross-item lint, and regulatory PDF generation. All require JWT + `require_plan_access`.
+
+#### Responsibility Matrix (Phase 22A)
+
+| Method | Path | Description |
+|:---:|------|------|
+| GET | `/api/v1/pif/responsibility-matrix?org_type=brand\|oem\|importer\|consultant` | Generic responsibility matrix (4 business types × 16 items, 64 cells) |
+| GET | `/api/v1/products/{id}/pif-responsibilities` | Auto-resolves to the row matching `product.org.type` |
+
+#### 7-Step Workflow & Outsourcing (Phase 22B)
+
+| Method | Path | Description |
+|:---:|------|------|
+| GET | `/api/v1/products/{id}/pif-workflow` | 7-step workflow auto-derivation (with `outsourcing_suggestions`) |
+| GET | `/api/v1/products/{id}/outsourcings` | List registered outsourcing entries |
+| POST | `/api/v1/products/{id}/outsourcings` | Add outsourcing (`item_number` + `vendor` + `note`) |
+| DELETE | `/api/v1/products/{id}/outsourcings/{id}` | Remove outsourcing |
+
+#### V0–V3 Version Snapshots (Phase 22C / 22E / 23C)
+
+| Method | Path | Description |
+|:---:|------|------|
+| POST | `/api/v1/products/{id}/pif-versions/snapshot` | Create snapshot of current 16-item state (V0/V1/V2/V3) |
+| GET | `/api/v1/products/{id}/pif-versions` | List all historical snapshots |
+| GET | `/api/v1/products/{id}/pif-versions/expiring` | Document-expiry aggregation (GMP / test reports / §12 reporting countdown) |
+| GET | `/api/v1/products/{id}/pif-versions/change-detection` | Compare fingerprints; returns `needs_resign` + `suggested_next_version` |
+| POST | `/api/v1/products/{id}/pif-versions/auto-draft` | One-click create V2/V3 draft (unsigned) |
+
+#### Cross-Item Lint (Phase 22D / 23A / 23B)
+
+| Method | Path | Description |
+|:---:|------|------|
+| GET | `/api/v1/products/{id}/cross-item-lint` | Execute 14 rules (R1–R14); returns alerts + penalty mapping (§22–§25 fine ranges) |
+
+#### Regulatory PIF PDF (Phase 23E)
+
+| Method | Path | Description |
+|:---:|------|------|
+| GET | `/api/v1/products/{id}/pif-versions/regulatory-pdf` | Generate current 14-page compliance PDF (lint computed live) |
+| GET | `/api/v1/products/{id}/pif-versions/{snapshot_id}/regulatory-pdf` | Generate PDF for the specified V0/V1/V2/V3 snapshot (restored from `items_snapshot`) |
+
+Response `Content-Disposition` uses RFC 5987 dual headers to support Chinese filenames.
+
 ## B.2 Frontend BFF (Next.js API Routes, `/api/*`)
 
 | Method | Path | Description |

@@ -295,4 +295,4 @@ Thank you for reading this far. The remaining 4 appendices provide complete refe
 
 © 2026 Baiyuan Tech. Licensed under CC BY-NC 4.0.
 
-**Nav** [← Chapter 11: Security Model](ch11-security-model.md) · [Appendix A: Glossary →](appendix-a-glossary.md)
+**Nav** [← Chapter 11: Security Model](ch11-security-model.md) · [Chapter 13: Compliance Engine Deep Dive →](ch13-compliance-engine.md)

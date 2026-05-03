@@ -41,8 +41,8 @@ keywords:
   - ECHA
   - PubChem
   - Taiwan
-version: "0.1"
-date-released: "2026-04-19"
+version: "0.2"
+date-released: "2026-04-30"
 preferred-citation:
   type: article
   title: >-
@@ -56,4 +56,5 @@ preferred-citation:
       affiliation: Baiyuan Tech
   year: 2026
   month: 4
+  version: "0.2"
   url: "https://github.com/baiyuan-tech/pif-whitepaper"

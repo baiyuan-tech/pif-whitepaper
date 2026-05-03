@@ -6,7 +6,7 @@
   "headline": "PIF AI 技術白皮書 (繁體中文版)",
   "inLanguage": "zh-TW",
   "datePublished": "2026-04-19",
-  "dateModified": "2026-04-19",
+  "dateModified": "2026-04-30",
   "author": {"@type": "Person", "name": "Vincent Lin", "affiliation": "Baiyuan Tech"},
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "isPartOf": {"@type": "CreativeWorkSeries", "name": "Baiyuan Tech Whitepapers"},
@@ -19,7 +19,7 @@
 
 *多租戶 AI 輔助化粧品 PIF 建檔平台*
 
-**版本**：v0.1 · **日期**：2026-04-19 · **作者**：Vincent Lin（Baiyuan Tech）
+**版本**：v0.2 · **日期**：2026-04-30 · **作者**：Vincent Lin（Baiyuan Tech）
 **License**：白皮書本體採 [CC BY-NC 4.0](../LICENSE)；PIF AI 底層軟體採 AGPL-3.0
 
 > [!NOTE]
@@ -56,12 +56,13 @@
 | [09](ch09-toxicology-pipeline.md) | **毒理資料 Pipeline** | PubChem / TFDA / ECHA / OECD 交叉查詢 |
 | [10](ch10-central-rag.md) | **中心 RAG 整合架構** | 方案 C+ 隔離、兩 header 認證、fail-soft |
 
-### 安全與流程 Part IV
+### 安全與合規流程 Part IV
 
 | § | 章節 | 主題 |
 |:--:|------|------|
 | [11](ch11-security-model.md) | **安全模型** | AES-256、JWT、TOTP、稽核、威脅模型、i18n 5 語系 |
 | [12](ch12-roadmap-deployment-opensource.md) | **路線圖、部署與開源策略** | Docker → K8s、AGPL 選擇、Phase 1-3、社群貢獻 |
+| [13](ch13-compliance-engine.md) | **PIF 合規引擎深度解析（Phase 22-23）** | 生命週期 5 階段、業者責任矩陣、14 條跨 Item lint、V0-V3 快照、罰則對照、合規 PDF 14 頁產出 |
 
 ### 附錄 Appendices
 
@@ -76,7 +77,7 @@
 
 ## 📖 閱讀建議
 
-**循序閱讀**：學術研究或法規專業人士建議由 §1 開始，逐章至 §12，再閱讀附錄。
+**循序閱讀**：學術研究或法規專業人士建議由 §1 開始，逐章至 §13，再閱讀附錄。
 
 **快速上手**（開源貢獻者）：
 1. 先讀 [§1 摘要](ch01-abstract.md) 建立整體印象
@@ -95,11 +96,11 @@
 
 | 指標 | 目標 | 目前狀態 |
 |---|---|---|
-| 章節 | 12 章 + 4 附錄 | 草擬中 |
-| 繁中字數 | 30,000+ 字 | 草擬中 |
-| 圖表 | 15+ Mermaid 圖 | 草擬中 |
-| 程式碼引用 | 40+ 條（格式 `file:line`） | 草擬中 |
-| 參考文獻 | 30+ 條 | 草擬中 |
+| 章節 | 13 章 + 4 附錄 | v0.2 完成 |
+| 繁中字數 | 30,000+ 字 | v0.2 ≈ 33,800 字 |
+| 圖表 | 15+ Mermaid 圖 | v0.2 ≈ 16 張 |
+| 程式碼引用 | 40+ 條（格式 `file:line`） | v0.2 完成 |
+| 參考文獻 | 30+ 條 | v0.2 完成 |
 
 > [!NOTE]
 > 本 README 為目錄頁。完整 PDF 可於 [GitHub Releases](https://github.com/baiyuan-tech/pif-whitepaper/releases) 下載。

@@ -17,6 +17,48 @@ last_modified_at: '2026-04-21T15:55:42Z'
 
 > 本附錄為白皮書之完整版本歷史。格式遵循 [Keep a Changelog](https://keepachangelog.com/) 慣例。
 
+## v0.2 — 2026-04-30
+
+### 新增
+
+- **第 13 章「PIF 合規引擎深度解析（Phase 22–23）」**（zh-TW + en 雙語）— 覆蓋 11 個 sub-phase 累積之合規能力：
+  - §13.1 生命週期 5 階段重組（pre_launch / development / manufacturing / post_launch / signing）
+  - §13.1.2 業者類型 × 16 項責任歸屬矩陣（4 × 16 = 64 格）
+  - §13.1.3 7 步驟工作流自動推導 + 委外建議
+  - §13.2 PIF 版本管理 V0/V1/V2/V3 快照
+  - §13.2.2 變更偵測（formula / process / packaging fingerprints, SHA-256）
+  - §13.2.3 一鍵 V2/V3 草案
+  - §13.2.4 文件時效自動追蹤（GMP / 試驗報告 / §12 通報倒數）
+  - §13.3 跨 Item lint 引擎 14 條規則 R1–R14（含 R1 進階過濾）
+  - §13.4 罰則對照表（§22–§25 罰鍰範圍 NT$3 萬至 NT$500 萬）
+  - §13.5 SA 簽章 metadata（method / hash / ip / cert ref）
+  - §13.6 合規 PIF PDF 14 頁一鍵產出（WeasyPrint A4 + Noto Sans CJK）
+  - §13.6.6 e2e 真實數據雙路徑驗證（依編號 / 依階段）
+
+- **附錄 B 新增 §B.1.9 PIF 合規引擎端點**（共 14 條新端點）：
+  - 責任矩陣 2 條
+  - 工作流與委外 4 條
+  - V0–V3 版本快照 5 條
+  - 跨 Item lint 1 條
+  - 合規 PDF 2 條
+
+### 變更
+
+- 第 12 章末段「導覽」連結由「附錄 A」改為「第 13 章」
+- 附錄 A 起始「導覽」連結由「第 12 章」改為「第 13 章」
+- README TOC 加入第 13 章
+- CITATION.cff version 由 `0.1` 升至 `0.2`，date-released 更新為 2026-04-30
+
+### 對應 Commits
+
+- 母 repo `VincentLinB/pif`：Phase 22.0 → Phase 23E（commits ac44591, 7618936, 8755f8d, 43d649e, 91190a2 等）
+- 白皮書 repo：本次 v0.2 commit
+
+### 已知限制
+
+- 第 13 章引用之效能數據（PDF 14 頁 2-3 秒、PDF 大小 640-690 KB）為實測值；其他 Phase 22-23 端點之延遲尚未 benchmark
+- 跨 Item lint R1–R14 規則表為 PIF AI 對 ITRI 講義之解讀；其他 SA 解讀可能略有差異，歡迎透過 GitHub issue 討論
+
 ## v0.1 — 2026-04-19
 
 ### 新增

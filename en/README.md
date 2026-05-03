@@ -6,7 +6,7 @@
   "headline": "PIF AI Whitepaper (English edition)",
   "inLanguage": "en",
   "datePublished": "2026-04-19",
-  "dateModified": "2026-04-19",
+  "dateModified": "2026-04-30",
   "author": {"@type": "Person", "name": "Vincent Lin", "affiliation": "Baiyuan Tech"},
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "isPartOf": {"@type": "CreativeWorkSeries", "name": "Baiyuan Tech Whitepapers"},
@@ -19,7 +19,7 @@
 
 *A Multi-Tenant AI-Assisted Platform for Cosmetic Product Information File Documentation*
 
-**Version**: v0.1 · **Date**: 2026-04-19 · **Author**: Vincent Lin (Baiyuan Tech)
+**Version**: v0.2 · **Date**: 2026-04-30 · **Author**: Vincent Lin (Baiyuan Tech)
 **License**: Whitepaper licensed under [CC BY-NC 4.0](../LICENSE); the underlying PIF AI software is AGPL-3.0.
 
 > [!NOTE]
@@ -56,12 +56,13 @@
 | [09](ch09-toxicology-pipeline.md) | **Toxicology Pipeline** | PubChem / TFDA / ECHA / OECD cross-query |
 | [10](ch10-central-rag.md) | **Central RAG Integration** | Scheme C+ isolation, dual-header auth, fail-soft |
 
-### Part IV — Security & Process
+### Part IV — Security & Compliance Process
 
 | § | Chapter | Topic |
 |:--:|---------|-------|
 | [11](ch11-security-model.md) | **Security Model** | AES-256, JWT, TOTP, audit, threat model, 5-locale i18n |
 | [12](ch12-roadmap-deployment-opensource.md) | **Roadmap, Deployment & Open-Source Strategy** | Docker → K8s, AGPL rationale, Phase 1–3, contribution model |
+| [13](ch13-compliance-engine.md) | **Compliance Engine Deep Dive (Phase 22-23)** | Lifecycle 5 stages, business-type responsibility matrix, 14 cross-item lint rules, V0-V3 snapshots, penalty mapping, 14-page regulatory PDF |
 
 ### Appendices
 
@@ -76,7 +77,7 @@
 
 ## 📖 How to Read
 
-**Linear reading**: Academic or regulatory readers should start at §1 and proceed through §12, then the appendices.
+**Linear reading**: Academic or regulatory readers should start at §1 and proceed through §13, then the appendices.
 
 **Quick start** (open-source contributors):
 
@@ -96,11 +97,11 @@
 
 | Metric | Target | Current |
 |---|---|---|
-| Chapters | 12 chapters + 4 appendices | In drafting |
-| English word count | 28,000+ words | In drafting |
-| Figures | 15+ Mermaid diagrams | In drafting |
-| Code citations | 40+ (format `file:line`) | In drafting |
-| References | 30+ entries | In drafting |
+| Chapters | 13 chapters + 4 appendices | v0.2 complete |
+| English word count | 28,000+ words | v0.2 ≈ 32,000 words |
+| Figures | 15+ Mermaid diagrams | v0.2 ≈ 16 diagrams |
+| Code citations | 40+ (format `file:line`) | v0.2 complete |
+| References | 30+ entries | v0.2 complete |
 
 > [!NOTE]
 > This README is a ToC. The complete PDF is available on [GitHub Releases](https://github.com/baiyuan-tech/pif-whitepaper/releases).
