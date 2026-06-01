@@ -79,6 +79,19 @@
 [![en](https://img.shields.io/badge/lang-en-blue.svg)](en/)
 [![Built with Claude Code](https://img.shields.io/badge/built%20with-Claude%20Code-6B46C1.svg)](https://docs.claude.com/en/docs/claude-code/overview)
 [![Live Platform](https://img.shields.io/badge/live-pif.baiyuan.io-brightgreen.svg)](https://pif.baiyuan.io)
+[![Download PDF (zh-TW)](https://img.shields.io/badge/download-PDF%20%E4%B8%AD%E6%96%87-d83933.svg)](https://github.com/baiyuan-tech/pif-whitepaper/releases/latest/download/whitepaper-zh-TW.pdf)
+[![Download PDF (en)](https://img.shields.io/badge/download-PDF%20English-0969da.svg)](https://github.com/baiyuan-tech/pif-whitepaper/releases/latest/download/whitepaper-en.pdf)
+
+### 📥 下載 PDF / Download PDF
+
+| 語言 Language | 下載 Download | 說明 Notes |
+|---|---|---|
+| 繁體中文 | **[whitepaper-zh-TW.pdf](https://github.com/baiyuan-tech/pif-whitepaper/releases/latest/download/whitepaper-zh-TW.pdf)** | 永遠指向最新 release / always the latest release |
+| English | **[whitepaper-en.pdf](https://github.com/baiyuan-tech/pif-whitepaper/releases/latest/download/whitepaper-en.pdf)** | 同上 / same |
+
+> 上方連結使用 `releases/latest/download/…`，恆指向最新版本。亦可至 [GitHub Releases](https://github.com/baiyuan-tech/pif-whitepaper/releases) 下載特定版本（路徑慣例：`releases/download/<version>/whitepaper-<lang>.pdf`）。
+>
+> The links above use `releases/latest/download/…` and always resolve to the newest release. For a specific version, see [GitHub Releases](https://github.com/baiyuan-tech/pif-whitepaper/releases).
 
 [📄 中文白皮書](zh-TW/) · [📄 English Whitepaper](en/) · [📋 Format Spec](FORMAT.md) · [💻 Code Repo](https://github.com/baiyuan-tech/pif)
 
