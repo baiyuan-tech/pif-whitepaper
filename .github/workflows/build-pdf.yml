@@ -170,10 +170,13 @@ jobs:
           if-no-files-found: warn
           retention-days: 90
 
-      - name: Attach PDF to v0.1-draft release
+      - name: Attach PDF to release
+        # On a release event, attach to the release that triggered the build
+        # (e.g. v0.2.3) — NOT a hardcoded tag. On master push, keep refreshing
+        # the rolling v0.1-draft pre-release as the always-latest draft asset.
         if: (github.event_name == 'release' || github.ref == 'refs/heads/master') && success()
         uses: softprops/action-gh-release@v3
         with:
-          tag_name: v0.1-draft
+          tag_name: ${{ github.event_name == 'release' && github.event.release.tag_name || 'v0.1-draft' }}
           files: whitepaper-${{ matrix.lang }}.pdf
           fail_on_unmatched_files: true
