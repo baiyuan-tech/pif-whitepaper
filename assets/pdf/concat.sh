@@ -16,22 +16,17 @@ if [[ ! -d "${LANG_PATH}" ]]; then
   exit 1
 fi
 
-# Deterministic order: ch01..ch12, then appendix-a..d
-FILES=(
-  "${LANG_PATH}/ch01-"*.md
-  "${LANG_PATH}/ch02-"*.md
-  "${LANG_PATH}/ch03-"*.md
-  "${LANG_PATH}/ch04-"*.md
-  "${LANG_PATH}/ch05-"*.md
-  "${LANG_PATH}/ch06-"*.md
-  "${LANG_PATH}/ch07-"*.md
-  "${LANG_PATH}/ch08-"*.md
-  "${LANG_PATH}/ch09-"*.md
-  "${LANG_PATH}/ch10-"*.md
-  "${LANG_PATH}/ch11-"*.md
-  "${LANG_PATH}/ch12-"*.md
-  "${LANG_PATH}/appendix-"*.md
-)
+# Deterministic order: all chNN-*.md in numeric order, then all appendix-*.md.
+# Globbed dynamically (sort -V) so new chapters are picked up automatically —
+# do NOT hardcode the chapter list (ch13 was once dropped from the PDF that way).
+mapfile -t CHAPTERS   < <(ls "${LANG_PATH}"/ch*-*.md        2>/dev/null | sort -V)
+mapfile -t APPENDICES < <(ls "${LANG_PATH}"/appendix-*-*.md 2>/dev/null | sort -V)
+FILES=("${CHAPTERS[@]}" "${APPENDICES[@]}")
+
+if [[ ${#CHAPTERS[@]} -eq 0 ]]; then
+  echo "No chapter files (ch*-*.md) found in ${LANG_PATH}" >&2
+  exit 1
+fi
 
 for f in "${FILES[@]}"; do
   [[ -f "$f" ]] || continue

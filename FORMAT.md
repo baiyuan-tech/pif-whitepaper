@@ -25,7 +25,7 @@ docs/whitepaper/
 │   ├── README.md
 │   ├── ch01-abstract.md       # One chapter per file
 │   ├── ch02-regulatory-background.md
-│   ├── ... (ch01 – ch12)
+│   ├── ... (ch01 – chNN)
 │   ├── appendix-a-glossary.md
 │   ├── appendix-b-api-endpoints.md
 │   ├── appendix-c-references.md
@@ -37,7 +37,7 @@ docs/whitepaper/
 Rules:
 
 - **One H1 per file.** No more than one `#`-level heading per chapter file.
-- **Per-chapter filenames** follow `chNN-kebab-slug.md` (NN = 01..12).
+- **Per-chapter filenames** follow `chNN-kebab-slug.md` (NN = 01..NN, zero-padded; `concat.sh` globs all `chNN-*.md` in `sort -V` order, so new chapters are picked up automatically).
 - **Appendix filenames** follow `appendix-<letter>-<slug>.md`.
 - The consolidated `whitepaper.md` / `.pdf` files are generated artifacts; they are checked in at release time only.
 
