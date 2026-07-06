@@ -48,6 +48,9 @@ identifiers:
   - type: doi
     value: "10.5281/zenodo.19994787"
     description: "Zenodo concept DOI for this whitepaper (resolves to the latest version)"
+  - type: doi
+    value: "10.5281/zenodo.21223127"
+    description: "Zenodo version DOI for v0.3.0"
 preferred-citation:
   type: article
   title: >-
