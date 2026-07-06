@@ -1,0 +1,53 @@
+{
+  "title": "PIF AI: A Multi-Tenant AI-Assisted Platform for Accelerating Cosmetic Product Information File Documentation Under Taiwan Cosmetic Hygiene and Safety Act",
+  "description": "<p>A bilingual (Traditional Chinese / English) technical whitepaper documenting <strong>PIF AI</strong> — a multi-tenant AI-assisted platform for cosmetic Product Information File (PIF) documentation under the Taiwan Cosmetic Hygiene and Safety Act.</p><p><strong>Coverage</strong>: the PIF 16-item regulatory structure, system architecture (FastAPI / Next.js multi-tenant SaaS), AI engine, central RAG integration (Scheme C+ isolation), security model, compliance engine (lifecycle 5 stages, business-type responsibility matrix, 14 cross-item lint rules, V0-V3 snapshots, penalty mapping, regulatory PDF generation), and — since v0.3.0 — the toxicology safety-assessment engine: NOAEL six-tier fallback cascade (read-across / structural similarity / qualitative authority / TTC), Margin-of-Safety with dermal-absorption correction, the fail-safe asymmetry doctrine, regulatory correctness (EU disclosure threshold vs concentration limit, TFDA/EU/CIR authority hierarchy, EPA ToxValDB backfill, ECHA C&amp;L structured harvesting), and self-driving evolution with computation-basis provenance.</p><p><strong>Languages</strong>: Traditional Chinese and English, 16 chapters + 4 appendices.</p><p><strong>License</strong>: CC BY-NC 4.0.</p>",
+  "creators": [
+    {
+      "name": "Lin, Vincent",
+      "affiliation": "Baiyuan Tech",
+      "orcid": "0009-0004-8264-368X"
+    }
+  ],
+  "upload_type": "publication",
+  "publication_type": "report",
+  "language": "zho",
+  "keywords": [
+    "Product Information File",
+    "PIF",
+    "cosmetic regulation",
+    "TFDA",
+    "Taiwan Cosmetic Hygiene and Safety Act",
+    "multi-tenant SaaS",
+    "Retrieval-Augmented Generation",
+    "toxicology",
+    "NOAEL",
+    "read-across",
+    "TTC",
+    "Margin of Safety",
+    "EPA ToxValDB",
+    "ECHA",
+    "CosIng",
+    "compliance engine",
+    "Anthropic Claude"
+  ],
+  "license": "CC-BY-NC-4.0",
+  "access_right": "open",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/baiyuan-tech/pif-whitepaper",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://pif.baiyuan.io",
+      "relation": "isDocumentedBy",
+      "resource_type": "other"
+    },
+    {
+      "identifier": "10.5281/zenodo.19994035",
+      "relation": "references",
+      "resource_type": "publication-report"
+    }
+  ],
+  "notes": "Sibling whitepaper in the Baiyuan Tech AI Infrastructure Whitepaper Series (see also the Baiyuan GEO Platform Whitepaper, concept DOI 10.5281/zenodo.19994035). Prior to v0.3.x this repository's Zenodo deposits were auto-typed as 'software' because no .zenodo.json existed; this file corrects the resource type to publication/report for future releases."
+}
