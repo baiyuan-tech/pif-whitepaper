@@ -16,8 +16,9 @@ keywords:
   - "偽陰"
 word_count: approx 3300
 last_updated: 2026-07-06
-last_modified_at: '2026-07-06T23:03:07+08:00'
+last_modified_at: '2026-07-06T15:03:19Z'
 ---
+
 
 
 # 第 15 章：法規正確性——揭示門檻、權威階層與結構化採集

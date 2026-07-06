@@ -15,8 +15,9 @@ keywords:
   - "asymmetric learning"
 word_count: approx 3300
 last_updated: 2026-07-06
-last_modified_at: '2026-07-06T23:03:07+08:00'
+last_modified_at: '2026-07-06T15:03:19Z'
 ---
+
 
 
 # Chapter 16: Self-Driving Evolution and Computation-Basis Documentation
