@@ -16,7 +16,9 @@ keywords:
   - "toxicology safety assessment"
 word_count: approx 3400
 last_updated: 2026-07-06
+last_modified_at: '2026-07-06T23:03:07+08:00'
 ---
+
 
 # Chapter 14: Toxicology Safety-Assessment Engine — The NOAEL Fallback Constitution and MoS Margin
 

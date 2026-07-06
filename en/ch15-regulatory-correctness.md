@@ -16,7 +16,9 @@ keywords:
   - "false negative"
 word_count: approx 3300
 last_updated: 2026-07-06
+last_modified_at: '2026-07-06T23:03:07+08:00'
 ---
+
 
 # Chapter 15: Regulatory Correctness — Disclosure Thresholds, Authority Hierarchy, and Structured Harvesting
 

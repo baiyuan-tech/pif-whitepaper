@@ -16,7 +16,9 @@ keywords:
   - "毒理安全評估"
 word_count: approx 3400
 last_updated: 2026-07-06
+last_modified_at: '2026-07-06T23:03:07+08:00'
 ---
+
 
 # 第 14 章：毒理安全評估引擎——NOAEL fallback 憲法與 MoS 邊際
 

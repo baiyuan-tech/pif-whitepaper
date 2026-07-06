@@ -15,7 +15,9 @@ keywords:
   - "非對稱學習"
 word_count: approx 3300
 last_updated: 2026-07-06
+last_modified_at: '2026-07-06T23:03:07+08:00'
 ---
+
 
 # 第 16 章：自駕進化與計算基準文獻化
 
