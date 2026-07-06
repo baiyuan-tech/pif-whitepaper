@@ -63,6 +63,9 @@
 | [11](ch11-security-model.md) | **Security Model** | AES-256, JWT, TOTP, audit, threat model, 5-locale i18n |
 | [12](ch12-roadmap-deployment-opensource.md) | **Roadmap, Deployment & Open-Source Strategy** | Docker → K8s, AGPL rationale, Phase 1–3, contribution model |
 | [13](ch13-compliance-engine.md) | **Compliance Engine Deep Dive (Phase 22-23)** | Lifecycle 5 stages, business-type responsibility matrix, 14 cross-item lint rules, V0-V3 snapshots, penalty mapping, 14-page regulatory PDF |
+| [14](ch14-toxicology-safety-engine.md) | **Toxicology Safety Engine** _(new in v0.3)_ | NOAEL six-tier fallback, read-across, TTC, Margin of Safety, DAp correction, fail-safe asymmetry |
+| [15](ch15-regulatory-correctness.md) | **Regulatory Correctness** _(new in v0.3)_ | Disclosure threshold vs concentration limit, TFDA/EU/CIR authority hierarchy, EPA ToxValDB backfill, ECHA C&L harvesting blocking CMR |
+| [16](ch16-self-driving-evolution.md) | **Self-Driving Evolution & Computation-Basis Provenance** _(new in v0.3)_ | agreement_rate, asymmetric learning, active re-grounding, tox_reference SSOT, adversarial red-team |
 
 ### Appendices
 
@@ -97,7 +100,7 @@
 
 | Metric | Target | Current |
 |---|---|---|
-| Chapters | 13 chapters + 4 appendices | v0.2 complete |
+| Chapters | 16 chapters + 4 appendices | v0.3 complete |
 | English word count | 28,000+ words | v0.2 ≈ 32,000 words |
 | Figures | 15+ Mermaid diagrams | v0.2 ≈ 16 diagrams |
 | Code citations | 40+ (format `file:line`) | v0.2 complete |

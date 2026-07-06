@@ -41,8 +41,8 @@ keywords:
   - ECHA
   - PubChem
   - Taiwan
-version: "0.2.3"
-date-released: "2026-05-03"
+version: "0.3.0"
+date-released: "2026-07-06"
 doi: "10.5281/zenodo.19994787"
 identifiers:
   - type: doi

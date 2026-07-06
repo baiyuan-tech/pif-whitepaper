@@ -58,9 +58,12 @@
     {"@type": "Thing", "name": "Product Information File"},
     {"@type": "Thing", "name": "Cosmetic regulation"},
     {"@type": "Thing", "name": "Retrieval-Augmented Generation"},
-    {"@type": "Thing", "name": "Multi-tenant SaaS"}
+    {"@type": "Thing", "name": "Multi-tenant SaaS"},
+    {"@type": "Thing", "name": "Toxicological safety assessment"},
+    {"@type": "Thing", "name": "No Observed Adverse Effect Level (NOAEL)"},
+    {"@type": "Thing", "name": "Margin of Safety"}
   ],
-  "keywords": "PIF, cosmetic, TFDA, Anthropic Claude, Claude Code, multi-tenant SaaS, RAG, toxicology, PubChem, ECHA",
+  "keywords": "PIF, cosmetic, TFDA, Anthropic Claude, Claude Code, multi-tenant SaaS, RAG, toxicology, PubChem, ECHA, NOAEL, read-across, TTC, Margin of Safety, EPA ToxValDB, self-driving toxicology",
   "url": "https://github.com/baiyuan-tech/pif-whitepaper"
 }
 </script>
@@ -74,7 +77,7 @@
 
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/license-CC%20BY--NC%204.0-lightgrey.svg)](LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19994787.svg)](https://doi.org/10.5281/zenodo.19994787)
-[![Status: v0.2.3](https://img.shields.io/badge/status-v0.2.3-blue.svg)](#version)
+[![Status: v0.3.0](https://img.shields.io/badge/status-v0.3.0-blue.svg)](#version)
 [![zh-TW](https://img.shields.io/badge/lang-zh--TW-red.svg)](zh-TW/)
 [![en](https://img.shields.io/badge/lang-en-blue.svg)](en/)
 [![Built with Claude Code](https://img.shields.io/badge/built%20with-Claude%20Code-6B46C1.svg)](https://docs.claude.com/en/docs/claude-code/overview)
@@ -182,7 +185,7 @@ Engineering details on how Claude Code contributed appear in §7 (AI Engine) and
 ```
 Lin, V. (2026). PIF AI: A multi-tenant AI-assisted platform for accelerating cosmetic
   product information file documentation under Taiwan Cosmetic Hygiene and Safety Act
-  (Whitepaper v0.2.2). Baiyuan Tech.
+  (Whitepaper v0.3.0). Baiyuan Tech.
   https://doi.org/10.5281/zenodo.19994787
 ```
 
@@ -196,9 +199,9 @@ Lin, V. (2026). PIF AI: A multi-tenant AI-assisted platform for accelerating cos
                  Cosmetic Hygiene and Safety Act},
   institution = {Baiyuan Tech},
   type        = {Whitepaper},
-  number      = {v0.2.2},
+  number      = {v0.3.0},
   year        = {2026},
-  month       = {may},
+  month       = {jul},
   doi         = {10.5281/zenodo.19994787},
   url         = {https://doi.org/10.5281/zenodo.19994787}
 }
@@ -286,7 +289,7 @@ pif-whitepaper/
 ├── zh-TW/                       # 繁體中文 12 章 + 4 附錄
 │   ├── README.md
 │   ├── ch01-abstract.md
-│   ├── ... ch02..ch12
+│   ├── ... ch02..ch16
 │   └── appendix-a..d.md
 ├── en/                          # English 12 chapters + 4 appendices
 │   └── (mirror of zh-TW)
@@ -307,6 +310,7 @@ pif-whitepaper/
 | v0.2.1 | 2026-05-03 | Zenodo registration trigger (content identical to v0.2). |
 | v0.2.2 | 2026-05-03 | First attempt to bake Zenodo DOI; mistakenly used a per-version DOI instead of the concept DOI. Corrected without a version bump on 2026-05-03 to point to the true concept DOI [10.5281/zenodo.19994787](https://doi.org/10.5281/zenodo.19994787). |
 | v0.2.3 | 2026-05-03 | Initially added a software cross-citation; reverted because the companion code repository is private and has no Zenodo deposit. Whitepaper concept DOI baked in is now stable. |
+| v0.3.0 | 2026-07-06 | Added Chapters 14–16 (bilingual zh-TW + en) covering the toxicology safety-assessment engine shipped since v0.2: **Ch 14** NOAEL six-tier fallback cascade (read-across / structural similarity / qualitative authority / TTC), Margin-of-Safety with dermal-absorption (DAp) correction, and the fail-safe asymmetry doctrine; **Ch 15** regulatory correctness (EU disclosure-threshold vs concentration-limit, TFDA/EU/CIR authority hierarchy, EPA ToxValDB backfill, ECHA C&L structured harvesting auto-blocking 421 genotoxic + 684 CMR CAS); **Ch 16** self-driving evolution (agreement_rate, asymmetric learning, active re-grounding, computation-basis SSOT) with an honest boundary on what "autonomous" means without an SA sign-off feature. |
 
 ---
 

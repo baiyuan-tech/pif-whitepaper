@@ -63,6 +63,9 @@
 | [11](ch11-security-model.md) | **安全模型** | AES-256、JWT、TOTP、稽核、威脅模型、i18n 5 語系 |
 | [12](ch12-roadmap-deployment-opensource.md) | **路線圖、部署與開源策略** | Docker → K8s、AGPL 選擇、Phase 1-3、社群貢獻 |
 | [13](ch13-compliance-engine.md) | **PIF 合規引擎深度解析（Phase 22-23）** | 生命週期 5 階段、業者責任矩陣、14 條跨 Item lint、V0-V3 快照、罰則對照、合規 PDF 14 頁產出 |
+| [14](ch14-toxicology-safety-engine.md) | **毒理安全評估引擎** _(v0.3 新增)_ | NOAEL 六階 fallback、read-across、TTC、MoS 邊際、DAp 修正、fail-safe 非對稱 |
+| [15](ch15-regulatory-correctness.md) | **法規正確性** _(v0.3 新增)_ | 揭示門檻 vs 濃度上限、TFDA/EU/CIR 權威階層、EPA ToxValDB backfill、ECHA C&L 採集封鎖 CMR |
+| [16](ch16-self-driving-evolution.md) | **自駕進化與計算基準文獻化** _(v0.3 新增)_ | agreement_rate、非對稱學習、主動 re-grounding、tox_reference SSOT、對抗式紅隊 |
 
 ### 附錄 Appendices
 
@@ -96,7 +99,7 @@
 
 | 指標 | 目標 | 目前狀態 |
 |---|---|---|
-| 章節 | 13 章 + 4 附錄 | v0.2 完成 |
+| 章節 | 16 章 + 4 附錄 | v0.3 完成 |
 | 繁中字數 | 30,000+ 字 | v0.2 ≈ 33,800 字 |
 | 圖表 | 15+ Mermaid 圖 | v0.2 ≈ 16 張 |
 | 程式碼引用 | 40+ 條（格式 `file:line`） | v0.2 完成 |

@@ -23,6 +23,19 @@ last_modified_at: '2026-05-03T04:21:13Z'
 
 > Complete version history. Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## v0.3 — 2026-07-06
+
+### Added
+
+- **Chapter 14 "Toxicology Safety Engine"** (bilingual zh-TW + en) — NOAEL six-tier fallback cascade (numeric → read-across → structural similarity via RDKit Tanimoto ≥ 0.50 → qualitative authority → TTC → data_gap), Margin-of-Safety computation, dermal-absorption (DAp) correction (fixed oils 50%→5%, essential oils / small molecules as negative controls), fail-safe asymmetry doctrine (prefer false-positive over false-negative, hard gates override, reviews must state a reason), and the display-layer rule that every ingredient must show an explicit safety basis.
+- **Chapter 15 "Regulatory Correctness"** (bilingual) — EU disclosure threshold vs concentration limit (positional parser stripping the disclosure clause; 62 rows recomputed preserving 7 true limits), TFDA/EU/CIR authority hierarchy (TFDA limit met → EU downgraded to advisory; TFDA silent → EU binding to prevent false-negatives), EPA ToxValDB backfill (sanity ceiling 10000, flag verdict fail-closed), ECHA C&L structured harvesting (1125 classifications → 421 genotoxic + 684 CMR CAS auto-blocked), heavy-metal-salt gap fix, and the "never create a false-negative when relaxing a limit" doctrine.
+- **Chapter 16 "Self-Driving Evolution & Computation-Basis Provenance"** (bilingual) — agreement_rate → 1.0 definition, asymmetric learning (false-safe auto-tightens / over-flag requires human review), an honest boundary on autonomy without an SA sign-off feature, three genuinely autonomous blocks (deterministic engine + resolved-cache + active re-grounding), the tox_reference computation-basis SSOT, and adversarial red-teaming.
+
+### Fixed
+
+- Chapter 13 footer "next" navigation link changed from Appendix A to Chapter 14.
+- Top-level / zh-TW / en README table of contents, chapter count (13→16), Schema.org `about` / `keywords`, and citation version synced to v0.3.0.
+
 ## v0.2 — 2026-04-30
 
 ### Added

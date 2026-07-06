@@ -23,6 +23,19 @@ last_modified_at: '2026-05-03T04:21:13Z'
 
 > 本附錄為白皮書之完整版本歷史。格式遵循 [Keep a Changelog](https://keepachangelog.com/) 慣例。
 
+## v0.3 — 2026-07-06
+
+### 新增
+
+- **第 14 章「毒理安全評估引擎」**（zh-TW + en 雙語）— NOAEL 六階 fallback cascade（數值 → read-across 借值 → 結構相似 RDKit Tanimoto ≥ 0.50 → 定性權威 → TTC → data_gap）、MoS 邊際計算、經皮吸收 DAp 修正（固定油 50%→5%，精油/小分子負控）、fail-safe 非對稱原則（寧偽陽不偽陰、硬閘門覆蓋、review 必附因）、顯示層每成分必顯明確安全依據。
+- **第 15 章「法規正確性」**（zh-TW + en 雙語）— EU 揭示門檻 vs 濃度上限（positional parser 剝揭示子句、62 列重算保 7 真值）、TFDA/EU/CIR 權威階層（TFDA 有限值達標 → EU 降 advisory；TFDA 無限值 → EU binding 防偽陰）、EPA ToxValDB backfill（sanity ceiling 10000、flag verdict fail-closed）、ECHA C&L 結構化採集（1125 分類 → 421 基因毒 + 684 CMR 自動封鎖）、重金屬鹽補洞、降級限值絕不造偽陰鐵則。
+- **第 16 章「自駕進化與計算基準文獻化」**（zh-TW + en 雙語）— agreement_rate → 1.0 定義、非對稱學習（false-safe 自動收緊 / over-flag 須人審）、無簽核功能的誠實邊界、確定性引擎 + resolved-cache + 主動 re-grounding 三塊真自主、tox_reference 計算基準文獻化 SSOT、對抗式紅隊。
+
+### 修正
+
+- 第 13 章章末導覽「下一章」由附錄 A 改指第 14 章。
+- 主 / zh-TW / en README 目錄、章數（13→16）、Schema.org `about` / `keywords`、引用格式版本同步至 v0.3.0。
+
 ## v0.2 — 2026-04-30
 
 ### 新增
