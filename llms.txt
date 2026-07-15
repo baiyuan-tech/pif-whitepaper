@@ -1,0 +1,64 @@
+# PIF AI 技術白皮書 | PIF AI Technical Whitepaper
+
+> 多租戶 AI 輔助化粧品產品資訊檔案（PIF）建置平台技術白皮書——依據台灣《化粧品衛生安全管理法》16 項 PIF 要求，涵蓋 Scheme C+ 多租戶隔離、L1 LLM Wiki + L2 向量 RAG 雙層檢索、法規到工程的五欄對照法，以及 Anthropic Claude Code 全端開發實錄。 | Technical whitepaper on a multi-tenant AI-assisted cosmetic Product Information File (PIF) platform under Taiwan's Cosmetic Hygiene and Safety Act.
+
+本白皮書公開發佈供 AI 索引與引用（授權 CC BY-NC 4.0）。This whitepaper is published for AI indexing and citation (CC BY-NC 4.0).
+每頁的 Markdown 原始檔可由 raw.githubusercontent.com 取得 / Markdown sources: https://raw.githubusercontent.com/baiyuan-tech/pif-whitepaper/master/<lang>/<file>.md
+
+## 繁體中文 (Traditional Chinese)
+
+- [目錄 Table of Contents](https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/)
+- [第 1 章：摘要與核心命題](https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch01-abstract.html): PIF AI 一句話摘要、四大設計命題、五層系統架構總覽，以及本白皮書的四項貢獻
+- [第 2 章：台灣化粧品 PIF 法規背景](https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch02-regulatory-background.html): 化粧品衛生安全管理法第 8 條、PIF 建檔義務、2026-07 強制日、罰則，以及與歐盟 CPNP、美國 MoCRA 的國際比較
+- [第 3 章：PIF 16 項深度解析](https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch03-pif-16-items.html): 化粧品 PIF 16 項資訊的資料來源、AI 處理策略、資料庫欄位對照，以及法規到工程的映射方法論
+- [第 4 章：系統全局架構](https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch04-system-architecture.html): PIF AI 五層架構的模組邊界、資料流、部署拓撲，以及設計決策背後的取捨
+- [第 5 章：前端技術棧](https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch05-frontend-stack.html): Next.js 15 App Router、React Server Components、shadcn/ui、react-hook-form + zod、5 語系 i18n 的設計取捨
+- [第 6 章：後端技術棧](https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch06-backend-stack.html): FastAPI、SQLAlchemy async、Alembic vs inline migration、Worker 架構、pytest 測試金字塔
+- [第 7 章：AI 引擎](https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch07-ai-engine.html): Claude Tool Use 設計範式、模型路由（Sonnet/Haiku）、prompt 工程、信心度評分，以及本專案以 Claude Code 協同開發的具體實踐
+- [第 8 章：資料庫與多租戶隔離](https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch08-multi-tenancy.html): PostgreSQL Schema 設計、Row-Level Security 實作、current_setting 注入模式、稽核日誌與加密策略
+- [第 9 章：毒理資料 Pipeline](https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch09-toxicology-pipeline.html): PubChem / TFDA 本地映射 / ECHA / OECD 多資料庫交叉查詢、快取策略、風險摘要生成
+- [第 10 章：中心 RAG 整合架構（方案 C+）](https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch10-central-rag.html): 百原中心 RAG v2 L1 LLM Wiki + L2 向量 RAG 雙層檢索、多租戶隔離方案 C+、兩 header 認證、fail-soft 策略
+- [第 11 章：安全模型](https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch11-security-model.html): 威脅模型、AES-256 加密、JWT+TOTP、稽核日誌、i18n 5 語系安全考量，以及與 OWASP Top 10 的對應
+- [第 12 章：路線圖、部署與開源策略](https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch12-roadmap-deployment-opensource.html): 三階段發展路線圖、Docker Compose 到 Kubernetes 的部署演進、AGPL-3.0 選擇理由，以及社群貢獻模式
+- [第 13 章：PIF 合規引擎深度解析（Phase 22–23）](https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch13-compliance-engine.html): PIF 16 項生命週期重組、業者類型責任矩陣、跨 Item 因果鏈引擎、V0–V3 版本快照、變更偵測、罰則對照與合規 PDF 產出
+- [第 14 章：毒理安全評估引擎——NOAEL fallback 憲法與 MoS 邊際](https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch14-toxicology-safety-engine.html): 從多源查詢到安全判定：NOAEL 六階 fallback cascade、MoS 邊際計算、經皮吸收 DAp 修正,以及「絕不留空白、寧偽陽不偽陰」的 fail-safe 憲法。
+- [第 15 章：法規正確性——揭示門檻、權威階層與結構化採集](https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch15-regulatory-correctness.html): 區分 EU 揭示門檻與濃度上限、建立 TFDA / EU / EPA 權威階層、以 EPA ToxValDB 補權威值、並用 ECHA C&L 結構化採集自動封鎖 CMR 與基因毒性物質。
+- [第 16 章：自駕進化與計算基準文獻化](https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/ch16-self-driving-evolution.html): SA 回饋學習迴路、agreement_rate KPI、主動 re-grounding 從權威源擴充 NOAEL、計算基準文獻化 SSOT,以及一個誠實的邊界:在沒有簽核功能的前提下,什麼才是真正的自主成長。
+- [附錄 A：縮寫與術語對照](https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/appendix-a-glossary.html): PIF AI 白皮書常用專有名詞、縮寫、中英對照（50+ 條）
+- [附錄 B：API 端點完整清單](https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/appendix-b-api-endpoints.html): PIF AI 所有 API 端點 — 前端 BFF、後端 FastAPI v1、中心 RAG 串接端點
+- [附錄 C：參考文獻](https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/appendix-c-references.html): 本白皮書引用之法規、標準、RFC、學術論文、工具文件完整清單
+- [附錄 D：變更紀錄](https://baiyuan-tech.github.io/pif-whitepaper/zh-TW/appendix-d-changelog.html): PIF AI 白皮書版本變更紀錄
+
+## English
+
+- [目錄 Table of Contents](https://baiyuan-tech.github.io/pif-whitepaper/en/)
+- [Chapter 1: Abstract and Core Propositions](https://baiyuan-tech.github.io/pif-whitepaper/en/ch01-abstract.html): One-sentence abstract, four design propositions, five-layer system overview, and the four contributions of this whitepaper
+- [Chapter 2: Regulatory Background — Taiwan Cosmetic PIF](https://baiyuan-tech.github.io/pif-whitepaper/en/ch02-regulatory-background.html): Article 8 of Taiwan's Cosmetic Hygiene and Safety Act, the PIF obligation, the July 2026 deadline, penalties, and international comparison (EU CPR, US MoCRA)
+- [Chapter 3: The 16 PIF Items — Deep Analysis](https://baiyuan-tech.github.io/pif-whitepaper/en/ch03-pif-16-items.html): Per-item data source, AI handling strategy, database mapping, and the five-column regulation-to-engineering mapping method
+- [Chapter 4: System Architecture](https://baiyuan-tech.github.io/pif-whitepaper/en/ch04-system-architecture.html): Five-layer architecture — module boundaries, data flow, deployment topology, and design trade-offs
+- [Chapter 5: Frontend Stack](https://baiyuan-tech.github.io/pif-whitepaper/en/ch05-frontend-stack.html): Next.js 15 App Router, React Server Components, shadcn/ui, react-hook-form + zod, 5-locale i18n design trade-offs
+- [Chapter 6: Backend Stack](https://baiyuan-tech.github.io/pif-whitepaper/en/ch06-backend-stack.html): FastAPI, SQLAlchemy async, Alembic vs inline migration, Worker architecture, pytest testing pyramid
+- [Chapter 7: AI Engine](https://baiyuan-tech.github.io/pif-whitepaper/en/ch07-ai-engine.html): Claude Tool Use design pattern, model routing (Sonnet/Haiku), prompt engineering, confidence scoring, and this project's concrete practice of co-developing with Claude Code
+- [Chapter 8: Database and Multi-Tenant Isolation](https://baiyuan-tech.github.io/pif-whitepaper/en/ch08-multi-tenancy.html): PostgreSQL schema design, Row-Level Security, current_setting injection pattern, audit log, and encryption strategy
+- [Chapter 9: Toxicology Data Pipeline](https://baiyuan-tech.github.io/pif-whitepaper/en/ch09-toxicology-pipeline.html): PubChem / TFDA local mirror / ECHA / OECD multi-database cross-query, caching, and AI risk-summary generation
+- [Chapter 10: Central RAG Integration Architecture (Scheme C+)](https://baiyuan-tech.github.io/pif-whitepaper/en/ch10-central-rag.html): Baiyuan central RAG v2 L1 LLM Wiki + L2 vector RAG dual-layer retrieval, multi-tenant isolation Scheme C+, dual-header auth, fail-soft strategy
+- [Chapter 11: Security Model](https://baiyuan-tech.github.io/pif-whitepaper/en/ch11-security-model.html): Threat model, AES-256 encryption, JWT+TOTP, audit logging, i18n security considerations, and OWASP Top 10 mapping
+- [Chapter 12: Roadmap, Deployment, and Open-Source Strategy](https://baiyuan-tech.github.io/pif-whitepaper/en/ch12-roadmap-deployment-opensource.html): Three-phase roadmap, Docker Compose → Kubernetes evolution, AGPL-3.0 rationale, and community contribution model
+- [Chapter 13: Compliance Engine Deep Dive (Phase 22–23)](https://baiyuan-tech.github.io/pif-whitepaper/en/ch13-compliance-engine.html): PIF 16-item lifecycle reorganization, business-type responsibility matrix, cross-item causal-chain engine, V0–V3 version snapshots, change detection, penalty mapping, and regulatory PDF generation.
+- [Chapter 14: Toxicology Safety-Assessment Engine — The NOAEL Fallback Constitution and MoS Margin](https://baiyuan-tech.github.io/pif-whitepaper/en/ch14-toxicology-safety-engine.html): From multi-source query to safety verdict: the six-tier NOAEL fallback cascade, MoS margin calculation, dermal-absorption DAp correction, and the fail-safe constitution of 'never leave a blank, prefer false positive over false negative'.
+- [Chapter 15: Regulatory Correctness — Disclosure Thresholds, Authority Hierarchy, and Structured Harvesting](https://baiyuan-tech.github.io/pif-whitepaper/en/ch15-regulatory-correctness.html): Distinguishing EU disclosure thresholds from concentration limits, establishing a TFDA / EU / EPA authority hierarchy, backfilling authoritative values with EPA ToxValDB, and using ECHA C&L structured harvesting to auto-block CMR and genotoxic substances.
+- [Chapter 16: Self-Driving Evolution and Computation-Basis Documentation](https://baiyuan-tech.github.io/pif-whitepaper/en/ch16-self-driving-evolution.html): The SA feedback learning loop, the agreement_rate KPI, active re-grounding to expand NOAELs from authoritative sources, the computation-basis documentation SSOT, and an honest boundary: what real autonomous growth actually is when there is no signing feature.
+- [Appendix A: Glossary and Acronyms](https://baiyuan-tech.github.io/pif-whitepaper/en/appendix-a-glossary.html): Common terms, acronyms, and Chinese-English mappings used throughout the PIF AI whitepaper
+- [Appendix B: Full API Endpoint List](https://baiyuan-tech.github.io/pif-whitepaper/en/appendix-b-api-endpoints.html): All PIF AI API endpoints — frontend BFF, backend FastAPI v1, and central RAG integration endpoints
+- [Appendix C: References](https://baiyuan-tech.github.io/pif-whitepaper/en/appendix-c-references.html): Full list of regulations, standards, RFCs, academic papers, and tool documentation cited in this whitepaper
+- [Appendix D: Changelog](https://baiyuan-tech.github.io/pif-whitepaper/en/appendix-d-changelog.html): Revision history of the PIF AI Whitepaper
+
+## PDF
+
+- [PDF（繁體中文）](https://github.com/baiyuan-tech/pif-whitepaper/releases/latest/download/whitepaper-zh-TW.pdf)
+- [PDF (English)](https://github.com/baiyuan-tech/pif-whitepaper/releases/latest/download/whitepaper-en.pdf)
+
+## 關於百原科技 About Baiyuan Technology
+
+- [百原科技官網 Baiyuan Technology](https://baiyuan.io)
+- [GitHub](https://github.com/baiyuan-tech)
