@@ -195,6 +195,7 @@ export type ProductCreate = z.infer<typeof ProductCreateSchema>;
 
 ### 5.4.2 實作：Context + JSON 字典
 
+{% raw %}
 ```typescript
 // src/lib/i18n/index.tsx
 export type Locale = "zh-TW" | "en" | "ja" | "ko" | "fr";
@@ -215,6 +216,7 @@ export function I18nProvider({ children }) {
   </I18nContext.Provider>;
 }
 ```
+{% endraw %}
 
 使用：`const { t } = useI18n(); <button>{t("common.login")}</button>`
 

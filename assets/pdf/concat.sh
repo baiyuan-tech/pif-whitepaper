@@ -41,6 +41,8 @@ for f in "${FILES[@]}"; do
     inld==1 && /^-->/ { inld=0; next }
     inld==1 { next }
     # Strip raw JSON-LD script blocks
+    /^\{% raw %\}[[:space:]]*$/ { next }
+    /^\{% endraw %\}[[:space:]]*$/ { next }
     /^<script type="application\/ld\+json">/ { inld=1; next }
     inld==1 && /^<\/script>/ { inld=0; next }
     inld==1 { next }

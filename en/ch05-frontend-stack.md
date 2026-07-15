@@ -191,6 +191,7 @@ The server-side Pydantic schema at `app/schemas/product.py` parallels but does n
 
 ### 5.4.2 Implementation: Context + JSON Dictionary
 
+{% raw %}
 ```typescript
 // src/lib/i18n/index.tsx
 export type Locale = "zh-TW" | "en" | "ja" | "ko" | "fr";
@@ -211,6 +212,7 @@ export function I18nProvider({ children }) {
   </I18nContext.Provider>;
 }
 ```
+{% endraw %}
 
 Usage: `const { t } = useI18n(); <button>{t("common.login")}</button>`
 
