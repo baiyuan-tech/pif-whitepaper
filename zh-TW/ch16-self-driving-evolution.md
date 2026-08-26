@@ -138,4 +138,4 @@ last_modified_at: '2026-07-15T03:58:33Z'
 
 © 2026 Baiyuan Tech. Licensed under CC BY-NC 4.0.
 
-**導覽** [← 第 15 章：法規正確性](ch15-regulatory-correctness.md) · [附錄 A：縮寫與術語 →](appendix-a-glossary.md)
+**導覽** [← 第 15 章：法規正確性](ch15-regulatory-correctness.md) · [第 17 章：標示與宣稱合規引擎 →](ch17-labeling-claims-engine.md)

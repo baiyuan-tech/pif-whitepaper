@@ -66,6 +66,9 @@
 | [14](ch14-toxicology-safety-engine.md) | **Toxicology Safety Engine** _(new in v0.3)_ | NOAEL six-tier fallback, read-across, TTC, Margin of Safety, DAp correction, fail-safe asymmetry |
 | [15](ch15-regulatory-correctness.md) | **Regulatory Correctness** _(new in v0.3)_ | Disclosure threshold vs concentration limit, TFDA/EU/CIR authority hierarchy, EPA ToxValDB backfill, ECHA C&L harvesting blocking CMR |
 | [16](ch16-self-driving-evolution.md) | **Self-Driving Evolution & Computation-Basis Provenance** _(new in v0.3)_ | agreement_rate, asymmetric learning, active re-grounding, tox_reference SSOT, adversarial red-team |
+| [17](ch17-labeling-claims-engine.md) | **Labeling & Claims Compliance Engine** _(new in v0.4)_ | Art. 7 / Art. 10 split, Claude Vision label extraction, 262-phrase L0030099 corpus, five-state verdicts, acknowledgement records, six false negatives |
+| [18](ch18-billing-fulfilment.md) | **Billing Model & Service Fulfilment** _(new in v0.4)_ | Pricing per output, entitlement follows balance, product-slot ratchet, anti-arbitrage tiered refunds, vendor dispatch |
+| [19](ch19-observability-edge-topology.md) | **Operational Observability & Edge Topology** _(new in v0.4)_ | Tenant footprint funnel, single-source audit_logs, retention boundary in a DB trigger, one IP mistake causing three harms |
 
 ### Appendices
 
@@ -100,7 +103,7 @@
 
 | Metric | Target | Current |
 |---|---|---|
-| Chapters | 16 chapters + 4 appendices | v0.3 complete |
+| Chapters | 19 chapters + 4 appendices | v0.4 complete |
 | English word count | 28,000+ words | v0.2 ≈ 32,000 words |
 | Figures | 15+ Mermaid diagrams | v0.2 ≈ 16 diagrams |
 | Code citations | 40+ (format `file:line`) | v0.2 complete |

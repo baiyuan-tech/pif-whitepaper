@@ -138,4 +138,4 @@ The core value of self-driving evolution lies not in any single machine-learning
 
 © 2026 Baiyuan Tech. Licensed under CC BY-NC 4.0.
 
-**Navigation** [← Chapter 15: Regulatory Correctness](ch15-regulatory-correctness.md) · [Appendix A: Glossary →](appendix-a-glossary.md)
+**Nav** [← Chapter 15: Regulatory Correctness](ch15-regulatory-correctness.md) · [Chapter 17: Labeling and Claims Compliance Engine →](ch17-labeling-claims-engine.md)

@@ -160,6 +160,26 @@ All require JWT + `require_plan_access`.
 
 Response `Content-Disposition` uses RFC 5987 dual headers to support Chinese filenames.
 
+### B.1.10 Labeling and Claims Compliance
+
+> See Chapter 17. Label image extraction lives at `/products/parse-label` (B.1.2); this section covers claim matching and acknowledgement. All require JWT.
+
+| Method | Path | Description |
+|:---:|------|------|
+| POST | `/api/v1/claim-check` | Run L0030099 matching over label text plus certification marks; returns a five-state verdict with per-phrase detail. Writes no state and blocks nothing |
+| POST | `/api/v1/claim-check/acknowledge` | Record an "acknowledged, not changing for now" declaration: stores the findings exactly as displayed plus the rule version then in force, and **does not re-run the check** |
+| GET | `/api/v1/claim-check/acknowledgements?product_id=` | Retrieve the acknowledgement history for a product |
+
+### B.1.11 Tenant Footprints (Platform Administrators)
+
+> See Chapter 19. This data contains email, IP and an activity trail, forming a personal behavioural profile, and is **restricted to super administrators**.
+
+| Method | Path | Description |
+|:---:|------|------|
+| GET | `/api/v1/admin/footprint/users?days=&only_unpaid=&limit=` | Tenant list: furthest funnel stage reached, blocked-event count, last activity |
+| GET | `/api/v1/admin/footprint/users/{user_id}?days=` | Full timeline for one user (events, IP, details) |
+| GET | `/api/v1/admin/footprint/funnel?days=` | Funnel summary: unique users per stage, largest drop-off, and what blocked them |
+
 ## B.2 Frontend BFF (Next.js API Routes, `/api/*`)
 
 | Method | Path | Description |

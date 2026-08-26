@@ -160,6 +160,26 @@ last_modified_at: '2026-07-15T03:58:33Z'
 
 回應 `Content-Disposition` 採 RFC 5987 雙標頭支援中文檔名。
 
+### B.1.10 標示與宣稱合規檢核
+
+> 詳見第 17 章。標籤影像擷取為 `/products/parse-label`(見 B.1.2);本節為宣稱比對與具結。全部需 JWT。
+
+| 方法 | 路徑 | 說明 |
+|:---:|------|------|
+| POST | `/api/v1/claim-check` | 對一段標示文字 + 驗證標章跑 L0030099 比對,回五態判定與逐條明細;不寫入狀態、不阻擋流程 |
+| POST | `/api/v1/claim-check/acknowledge` | 記錄「我已知悉暫不修改」具結:存當下看到的完整明細與當時法規版本,**不重跑檢核** |
+| GET | `/api/v1/claim-check/acknowledgements?product_id=` | 查該產品的具結歷程 |
+
+### B.1.11 使用者足跡（平台管理員）
+
+> 詳見第 19 章。資料含 email + IP + 行為軌跡,構成個人行為檔案,**一律 super admin 限定**。
+
+| 方法 | 路徑 | 說明 |
+|:---:|------|------|
+| GET | `/api/v1/admin/footprint/users?days=&only_unpaid=&limit=` | 租戶清單:走到哪一階段、撞牆次數、最後活動 |
+| GET | `/api/v1/admin/footprint/users/{user_id}?days=` | 單一使用者完整時間軸(事件、IP、明細) |
+| GET | `/api/v1/admin/footprint/funnel?days=` | 漏斗彙總:各階段不重複人數、最大流失點、被什麼擋住 |
+
 ## B.2 前端 BFF (Next.js API Routes, `/api/*`)
 
 | 方法 | 路徑 | 說明 |

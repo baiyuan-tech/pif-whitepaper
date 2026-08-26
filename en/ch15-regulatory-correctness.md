@@ -156,4 +156,4 @@ Verification method: end-to-end + adversarial regression. Menthol 12% over-limit
 
 © 2026 Baiyuan Tech. Licensed under CC BY-NC 4.0.
 
-**Navigation** [← Chapter 14: Toxicology Safety-Assessment Engine](ch14-toxicology-safety-engine.md) · [Chapter 16: Self-Driving Evolution and Computation-Basis Documentation →](ch16-self-driving-evolution.md)
+**Nav** [← Chapter 14: Toxicology Safety-Assessment Engine](ch14-toxicology-safety-engine.md) · [Chapter 16: Self-Driving Evolution and Computation-Basis Documentation →](ch16-self-driving-evolution.md)

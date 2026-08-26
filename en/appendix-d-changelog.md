@@ -27,6 +27,20 @@ last_modified_at: '2026-07-15T03:58:33Z'
 
 > Complete version history. Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## v0.4 — 2026-08-24
+
+### Added
+
+- **Chapter 17, "Labeling and Claims Compliance Engine"** (zh-TW + en) — the split between Art. 7 statutory label elements and the Art. 10 determination rule; Claude Vision tool-use extraction of 21 fields plus the full ingredient list (original label order preserved) and certification marks (including image-only); the 262-phrase L0030099 corpus (Appendix I 34 / II 15 categories 184 / III 8 groups 24 / IV 20); two extraction traps (CJK compatibility ideographs, limits split across lines); five-state verdicts (red/amber/pending_data/green/gray); the VIEWSTATE fingerprint trap in source monitoring; advisory-only operation with acknowledgement records; and six real false negatives.
+- **Chapter 18, "Billing Model and Service Fulfilment"** (zh-TW + en) — why pricing is per output rather than per seat; entitlement following the current balance (replacing "any past payment grants permanent paid status"); the deliberate asymmetry of the product-slot ratchet; anti-arbitrage tiered refunds as a pure function with no database access; and the fulfilment layer with its "an SA signature must bind to one specific report" constraint.
+- **Chapter 19, "Operational Observability and Edge Topology"** (zh-TW + en) — the ephemeral-evidence problem; why footprints reuse `audit_logs` instead of adding a table; telemetry requiring its own transaction; the retention boundary living in a DB trigger; why both common client-IP patterns are wrong under a CDN + L4 routing topology; the three distinct harms from one root cause (meaningless telemetry / brute-force protection collapsed into a global lock / forgeable signature evidence); and convergence to a single source with behavioural verification.
+
+### Fixed
+
+- Chapter 16's "next" navigation link now points to Chapter 17 rather than Appendix A.
+- **Four English chapters (ch13-ch16) had `**Navigation**` footers changed to `**Nav**`** — the strip rule in `assets/pdf/concat.sh` is `^\*\*Nav\*\*`, which `**Navigation**` does not match, so those four footers **leaked into the English PDF**.
+- Root / zh-TW / en README tables of contents, chapter count (16 to 19) and citation version synchronised to v0.4.0.
+
 ## v0.3 — 2026-07-06
 
 ### Added

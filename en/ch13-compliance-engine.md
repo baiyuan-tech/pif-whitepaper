@@ -432,4 +432,4 @@ License: AGPL-3.0 (same as parent project). Commercial reproduction or closed-so
 
 © 2026 Baiyuan Tech. Licensed under CC BY-NC 4.0.
 
-**Navigation** [← Chapter 12: Roadmap, Deployment & Open-Source Strategy](ch12-roadmap-deployment-opensource.md) · [Chapter 14: Toxicology Safety-Assessment Engine →](ch14-toxicology-safety-engine.md)
+**Nav** [← Chapter 12: Roadmap, Deployment & Open-Source Strategy](ch12-roadmap-deployment-opensource.md) · [Chapter 14: Toxicology Safety-Assessment Engine →](ch14-toxicology-safety-engine.md)

@@ -176,4 +176,4 @@ The core value of the fallback constitution: **let the AI engine's toxicological
 
 © 2026 Baiyuan Tech. Licensed under CC BY-NC 4.0.
 
-**Navigation** [← Chapter 13: Compliance Engine Deep Dive](ch13-compliance-engine.md) · [Chapter 15: Regulatory Correctness — Disclosure Thresholds, Authority Hierarchy, and Structured Harvesting →](ch15-regulatory-correctness.md)
+**Nav** [← Chapter 13: Compliance Engine Deep Dive](ch13-compliance-engine.md) · [Chapter 15: Regulatory Correctness — Disclosure Thresholds, Authority Hierarchy, and Structured Harvesting →](ch15-regulatory-correctness.md)
