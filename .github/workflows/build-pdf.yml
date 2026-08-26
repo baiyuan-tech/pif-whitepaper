@@ -56,6 +56,47 @@ jobs:
           kpsewhich lmodern.sty > /dev/null || { echo "FATAL: lmodern.sty missing" >&2; exit 1; }
           echo "Prerequisites OK."
 
+      - name: Stamp version into PDF header
+        # 頁首版本原本寫死在 assets/pdf/metadata-*.yaml,自 v0.1 起從沒更新過 ——
+        # v0.2 / v0.3 / v0.4 的 PDF 頁首全印著 "v0.1 · 2026-04"。
+        # 改由 CITATION.cff 推導:那是發版時本來就必須更新的 SSOT
+        # (見 CLAUDE.md「引用 / 版本」),不再需要有人記得多改一個地方。
+        run: |
+          set -eo pipefail
+          VER=$(grep -m1 '^version:' CITATION.cff | cut -d'"' -f2)
+          REL=$(grep -m1 '^date-released:' CITATION.cff | cut -d'"' -f2)
+          if [ -z "$VER" ] || [ -z "$REL" ]; then
+            echo "FATAL: 無法從 CITATION.cff 取得 version / date-released" >&2
+            exit 1
+          fi
+          STAMP="v${VER} · ${REL%-*}"
+          META="assets/pdf/metadata-${{ matrix.lang }}.yaml"
+          python3 - "$META" "$STAMP" "$REL" <<'PY'
+          import sys
+          path, stamp, rel = sys.argv[1], sys.argv[2], sys.argv[3]
+          with open(path, encoding='utf-8') as fh:
+              lines = fh.read().split(chr(10))
+          MARK = 'fancyhead[R]{'
+          n1 = n2 = 0
+          out = []
+          for line in lines:
+              if MARK in line:
+                  head, _, rest = line.partition(MARK)
+                  tail = rest.split('}', 1)[1] if '}' in rest else ''
+                  line = head + MARK + stamp + '}' + tail
+                  n1 += 1
+              elif line.startswith('date: '):
+                  line = 'date: "' + rel + '"'
+                  n2 += 1
+              out.append(line)
+          if n1 != 1 or n2 != 1:
+              sys.exit('FATAL: header/date anchors matched %d/%d, expected 1/1' % (n1, n2))
+          with open(path, 'w', encoding='utf-8') as fh:
+              fh.write(chr(10).join(out))
+          print('[stamp] %s -> %s / %s' % (path, stamp, rel))
+          PY
+          grep -nE 'fancyhead\[R\]|^date:' "$META"
+
       - name: Concatenate chapters
         run: |
           chmod +x assets/pdf/concat.sh
