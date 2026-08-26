@@ -81,6 +81,13 @@ git push git@github.com:baiyuan-tech/pif-whitepaper.git master
 ## 引用 / 版本
 
 - `CITATION.cff` + README 內 JSON-LD 帶 Zenodo DOI；改 DOI / 版本時兩處要同步。
+- **Zenodo 存放已自動化**(build-pdf.yml 的 `zenodo` job,release 事件才跑):
+  把建好的 PDF 存成 concept DOI 底下的新版本。腳本 `assets/pdf/zenodo_deposit.py`,
+  可本機 `--dry-run` 演練(建草稿不發佈)。需 `secrets.ZENODO_TOKEN` + `vars.ZENODO_CONCEPT`。
+  ⚠ **GitHub↔Zenodo webhook 必須維持關閉** —— 兩者並存每次發版會產生兩筆記錄,
+  且 webhook 若較晚完成,concept DOI 會指向沒有 PDF 的那筆。
+  背景:官方整合只封存原始碼 ZIP,不碰 release assets,導致 Zenodo 落地頁一直沒有
+  `citation_pdf_url`,Google Scholar 因此抓不到全文(2026-08-26 實測確認並補齊)。
 - **PDF 頁首與標題頁日期由 `CITATION.cff` 推導**(build-pdf.yml 的 `Stamp version` 步驟),
   不要再去改 `assets/pdf/metadata-*.yaml` 裡的 `ancyhead[R]{...}` 與 `date:` ——
   那兩個值曾寫死在 v0.1,導致 v0.2/v0.3/v0.4 的 PDF 頁首全印著 `v0.1 · 2026-04`。
