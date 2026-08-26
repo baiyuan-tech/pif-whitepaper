@@ -15,7 +15,9 @@ keywords:
   - "certification marks"
 word_count: approx 3400
 last_updated: 2026-08-24
+last_modified_at: '2026-08-26T10:16:36+08:00'
 ---
+
 
 # Chapter 17: Labeling and Claims Compliance Engine
 

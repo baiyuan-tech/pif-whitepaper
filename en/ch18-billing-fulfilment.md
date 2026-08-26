@@ -13,7 +13,9 @@ keywords:
   - "ratchet"
 word_count: approx 2900
 last_updated: 2026-08-24
+last_modified_at: '2026-08-26T10:16:36+08:00'
 ---
+
 
 # Chapter 18: Billing Model and Service Fulfilment
 
