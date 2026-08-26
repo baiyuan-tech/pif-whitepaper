@@ -116,7 +116,7 @@ Use GitHub Flavored Markdown pipe syntax. Always provide a header row with align
 - ASCII quotation marks (`"…"` not `“…”`) in markdown source
 - Space between CJK and Latin: `PIF 建檔` not `PIF建檔`
 - ISO 8601 dates: `2026-04-19` not `Apr 19, 2026`
-- `**bold**` for defined terms on first use; `_italics_` for emphasis; `` `code` `` for technical identifiers
+- `**bold**` for defined terms on first use; `*italics*` for emphasis and for work titles in references; `` `code` `` for technical identifiers
 - Tone: academic-technical; avoid marketing superlatives; cite sources
 
 ## 10. AI-Friendly Structured Data / AI 友善結構化資料

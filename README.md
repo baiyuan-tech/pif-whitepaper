@@ -77,7 +77,7 @@
 
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/license-CC%20BY--NC%204.0-lightgrey.svg)](LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19994787.svg)](https://doi.org/10.5281/zenodo.19994787)
-[![Status: v0.4.0](https://img.shields.io/badge/status-v0.4.0-blue.svg)](#version)
+[![Status: v0.4.0](https://img.shields.io/badge/status-v0.4.0-blue.svg)](#修訂記錄--revision-history)
 [![zh-TW](https://img.shields.io/badge/lang-zh--TW-red.svg)](zh-TW/)
 [![en](https://img.shields.io/badge/lang-en-blue.svg)](en/)
 [![Built with Claude Code](https://img.shields.io/badge/built%20with-Claude%20Code-6B46C1.svg)](https://docs.claude.com/en/docs/claude-code/overview)
@@ -85,7 +85,7 @@
 [![Download PDF (zh-TW)](https://img.shields.io/badge/download-PDF%20%E4%B8%AD%E6%96%87-d83933.svg)](https://github.com/baiyuan-tech/pif-whitepaper/releases/latest/download/whitepaper-zh-TW.pdf)
 [![Download PDF (en)](https://img.shields.io/badge/download-PDF%20English-0969da.svg)](https://github.com/baiyuan-tech/pif-whitepaper/releases/latest/download/whitepaper-en.pdf)
 
-### 📥 下載 PDF / Download PDF
+## 📥 下載 PDF / Download PDF
 
 | 語言 Language | 下載 Download | 說明 Notes |
 |---|---|---|

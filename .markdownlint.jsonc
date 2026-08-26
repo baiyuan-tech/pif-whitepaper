@@ -55,9 +55,22 @@
   // MD046 — fenced code blocks
   "MD046": { "style": "fenced" },
 
-  // MD049 — italic with underscores
-  "MD049": { "style": "underscore" },
+  // MD049 — italic with asterisks.
+  // v0.4 修正:原設 underscore,但全書實際用法為 asterisk 221 處 : underscore 56 處
+  // (多為參考文獻中的期刊/書名)。設定從未反映實際慣例 → 對齊實際,FORMAT.md §9 同步更新。
+  "MD049": { "style": "asterisk" },
 
   // MD050 — bold with asterisks
-  "MD050": { "style": "asterisk" }
+  "MD050": { "style": "asterisk" },
+
+  // MD053 — disabled: false positive on Pandoc footnotes.
+  // 本書參考資料一律用 `[^1]: ...` 註腳語法,markdownlint 的解析器不認得註腳,
+  // 把它們當成「未被使用的連結參考定義」。全部 124 筆命中皆為此誤判。
+  "MD053": false,
+
+  // MD060 — disabled: table pipe style uniformity.
+  // 新版 markdownlint 才加入的規則;本書 24 章的表格混用 compact 與 aligned 兩種
+  // 寫法(1320 : 305),兩者的**渲染結果完全相同**。為此機械改寫 1600+ 個儲存格
+  // 對讀者零助益、卻有破壞表格的實際風險。FORMAT.md §7「表頭必附對齊標記」仍為權威。
+  "MD060": false
 }

@@ -63,12 +63,12 @@
 | [11](ch11-security-model.md) | **安全模型** | AES-256、JWT、TOTP、稽核、威脅模型、i18n 5 語系 |
 | [12](ch12-roadmap-deployment-opensource.md) | **路線圖、部署與開源策略** | Docker → K8s、AGPL 選擇、Phase 1-3、社群貢獻 |
 | [13](ch13-compliance-engine.md) | **PIF 合規引擎深度解析（Phase 22-23）** | 生命週期 5 階段、業者責任矩陣、14 條跨 Item lint、V0-V3 快照、罰則對照、合規 PDF 14 頁產出 |
-| [14](ch14-toxicology-safety-engine.md) | **毒理安全評估引擎** _(v0.3 新增)_ | NOAEL 六階 fallback、read-across、TTC、MoS 邊際、DAp 修正、fail-safe 非對稱 |
-| [15](ch15-regulatory-correctness.md) | **法規正確性** _(v0.3 新增)_ | 揭示門檻 vs 濃度上限、TFDA/EU/CIR 權威階層、EPA ToxValDB backfill、ECHA C&L 採集封鎖 CMR |
-| [16](ch16-self-driving-evolution.md) | **自駕進化與計算基準文獻化** _(v0.3 新增)_ | agreement_rate、非對稱學習、主動 re-grounding、tox_reference SSOT、對抗式紅隊 |
-| [17](ch17-labeling-claims-engine.md) | **標示與宣稱合規引擎** _(v0.4 新增)_ | §7/§10 雙法源、Claude Vision 標籤擷取、L0030099 262 條語料、五態判定、具結歷程、六個假陰性 |
-| [18](ch18-billing-fulfilment.md) | **計費模型與服務履約** _(v0.4 新增)_ | 以產出計價、付費身分跟著餘額、產品位棘輪、防套利階梯退費、委外派工 |
-| [19](ch19-observability-edge-topology.md) | **營運可觀測性與邊緣拓撲** _(v0.4 新增)_ | 租戶足跡漏斗、audit_logs 單源、保留期寫在 DB trigger、一個 IP 錯誤三種傷害 |
+| [14](ch14-toxicology-safety-engine.md) | **毒理安全評估引擎** *(v0.3 新增)* | NOAEL 六階 fallback、read-across、TTC、MoS 邊際、DAp 修正、fail-safe 非對稱 |
+| [15](ch15-regulatory-correctness.md) | **法規正確性** *(v0.3 新增)* | 揭示門檻 vs 濃度上限、TFDA/EU/CIR 權威階層、EPA ToxValDB backfill、ECHA C&L 採集封鎖 CMR |
+| [16](ch16-self-driving-evolution.md) | **自駕進化與計算基準文獻化** *(v0.3 新增)* | agreement_rate、非對稱學習、主動 re-grounding、tox_reference SSOT、對抗式紅隊 |
+| [17](ch17-labeling-claims-engine.md) | **標示與宣稱合規引擎** *(v0.4 新增)* | §7/§10 雙法源、Claude Vision 標籤擷取、L0030099 262 條語料、五態判定、具結歷程、六個假陰性 |
+| [18](ch18-billing-fulfilment.md) | **計費模型與服務履約** *(v0.4 新增)* | 以產出計價、付費身分跟著餘額、產品位棘輪、防套利階梯退費、委外派工 |
+| [19](ch19-observability-edge-topology.md) | **營運可觀測性與邊緣拓撲** *(v0.4 新增)* | 租戶足跡漏斗、audit_logs 單源、保留期寫在 DB trigger、一個 IP 錯誤三種傷害 |
 
 ### 附錄 Appendices
 
