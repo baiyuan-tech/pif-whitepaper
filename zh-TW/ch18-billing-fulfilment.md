@@ -13,8 +13,9 @@ keywords:
   - "棘輪制"
 word_count: approx 2900
 last_updated: 2026-08-24
-last_modified_at: '2026-08-26T10:16:36+08:00'
+last_modified_at: '2026-08-26T02:16:54Z'
 ---
+
 
 
 # 第 18 章：計費模型與服務履約

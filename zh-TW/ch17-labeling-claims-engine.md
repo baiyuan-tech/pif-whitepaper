@@ -15,8 +15,9 @@ keywords:
   - "驗證標章"
 word_count: approx 3400
 last_updated: 2026-08-24
-last_modified_at: '2026-08-26T10:16:36+08:00'
+last_modified_at: '2026-08-26T02:16:54Z'
 ---
+
 
 
 # 第 17 章：標示與宣稱合規引擎

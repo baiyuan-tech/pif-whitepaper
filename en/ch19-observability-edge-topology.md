@@ -15,8 +15,9 @@ keywords:
   - "append-only"
 word_count: approx 2800
 last_updated: 2026-08-24
-last_modified_at: '2026-08-26T10:16:36+08:00'
+last_modified_at: '2026-08-26T02:16:54Z'
 ---
+
 
 
 # Chapter 19: Operational Observability and Edge Topology

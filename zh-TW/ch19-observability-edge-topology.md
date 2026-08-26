@@ -15,8 +15,9 @@ keywords:
   - "append-only"
 word_count: approx 2800
 last_updated: 2026-08-24
-last_modified_at: '2026-08-26T10:16:36+08:00'
+last_modified_at: '2026-08-26T02:16:54Z'
 ---
+
 
 
 # 第 19 章：營運可觀測性與邊緣拓撲
