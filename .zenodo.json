@@ -47,6 +47,11 @@
       "identifier": "10.5281/zenodo.19994035",
       "relation": "references",
       "resource_type": "publication-report"
+    },
+    {
+      "identifier": "10.5281/zenodo.22138951",
+      "relation": "references",
+      "resource_type": "publication-report"
     }
   ],
   "notes": "Sibling whitepaper in the Baiyuan Tech AI Infrastructure Whitepaper Series (see also the Baiyuan GEO Platform Whitepaper, concept DOI 10.5281/zenodo.19994035). Prior to v0.3.x this repository's Zenodo deposits were auto-typed as 'software' because no .zenodo.json existed; this file corrects the resource type to publication/report for future releases."
