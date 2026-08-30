@@ -25,6 +25,7 @@ Google Scholar 因此抓不到全文,從發佈至今從未具備被收錄的條�
 from __future__ import annotations
 
 import argparse
+import datetime
 import json
 import os
 import sys
@@ -159,6 +160,12 @@ def main() -> int:
     # 新版本的 version 欄位會是空的,不補就會顯示空白
     meta = dict(draft.get("metadata") or {})
     meta["version"] = args.version
+    # 2026-08-30 實證:newversion 複製來的 metadata 帶著舊版的 `dates`,PUT 回 400 "metadata.dates: Invalid date provided."
+    # 新版本的日期就是今天,`dates` 區間對白皮書沒有意義 → 一律拿掉;publication_date 更新為今天。
+    if "dates" in meta:
+        print("[zenodo] 移除複製來的 dates=%r" % (meta.get("dates"),))
+        meta.pop("dates", None)
+    meta["publication_date"] = datetime.date.today().isoformat()
     _, updated = _req("PUT", "%s/deposit/depositions/%s" % (API, draft_id), token,
                       data=json.dumps({"metadata": meta}).encode("utf-8"),
                       content_type="application/json")
