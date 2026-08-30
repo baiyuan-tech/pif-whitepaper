@@ -55,6 +55,9 @@ identifiers:
   - type: doi
     value: "10.5281/zenodo.21223127"
     description: "Zenodo version DOI for v0.3.0"
+  - type: doi
+    value: "10.5281/zenodo.22168123"
+    description: "Zenodo version DOI for v0.5.0"
 preferred-citation:
   type: article
   title: >-
