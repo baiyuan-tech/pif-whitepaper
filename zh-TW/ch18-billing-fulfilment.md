@@ -13,8 +13,9 @@ keywords:
   - "棘輪制"
 word_count: approx 2900
 last_updated: 2026-08-24
-last_modified_at: '2026-08-26T02:16:54Z'
+last_modified_at: '2026-08-26T02:25:46Z'
 ---
+
 
 
 
