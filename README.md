@@ -6,7 +6,7 @@
   "headline": "PIF AI Whitepaper — Multi-Tenant AI-Assisted Cosmetic PIF Documentation Platform",
   "alternativeHeadline": "PIF AI 技術白皮書 — 多租戶 AI 輔助化粧品 PIF 建檔平台",
   "datePublished": "2026-04-19",
-  "dateModified": "2026-04-30",
+  "dateModified": "2026-08-30",
   "inLanguage": ["zh-TW", "en"],
   "author": {
     "@type": "Person",
@@ -77,7 +77,7 @@
 
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/license-CC%20BY--NC%204.0-lightgrey.svg)](LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19994787.svg)](https://doi.org/10.5281/zenodo.19994787)
-[![Status: v0.4.0](https://img.shields.io/badge/status-v0.4.0-blue.svg)](#修訂記錄--revision-history)
+[![Status: v0.5.0](https://img.shields.io/badge/status-v0.5.0-blue.svg)](#修訂記錄--revision-history)
 [![zh-TW](https://img.shields.io/badge/lang-zh--TW-red.svg)](zh-TW/)
 [![en](https://img.shields.io/badge/lang-en-blue.svg)](en/)
 [![Built with Claude Code](https://img.shields.io/badge/built%20with-Claude%20Code-6B46C1.svg)](https://docs.claude.com/en/docs/claude-code/overview)
@@ -185,7 +185,7 @@ Engineering details on how Claude Code contributed appear in §7 (AI Engine) and
 ```
 Lin, V. (2026). PIF AI: A multi-tenant AI-assisted platform for accelerating cosmetic
   product information file documentation under Taiwan Cosmetic Hygiene and Safety Act
-  (Whitepaper v0.4.0). Baiyuan Tech.
+  (Whitepaper v0.5.0). Baiyuan Tech.
   https://doi.org/10.5281/zenodo.19994787
 ```
 
@@ -199,9 +199,9 @@ Lin, V. (2026). PIF AI: A multi-tenant AI-assisted platform for accelerating cos
                  Cosmetic Hygiene and Safety Act},
   institution = {Baiyuan Tech},
   type        = {Whitepaper},
-  number      = {v0.4.0},
+  number      = {v0.5.0},
   year        = {2026},
-  month       = {jul},
+  month       = {aug},
   doi         = {10.5281/zenodo.19994787},
   url         = {https://doi.org/10.5281/zenodo.19994787}
 }
@@ -310,6 +310,7 @@ pif-whitepaper/
 | v0.2.1 | 2026-05-03 | Zenodo registration trigger (content identical to v0.2). |
 | v0.2.2 | 2026-05-03 | First attempt to bake Zenodo DOI; mistakenly used a per-version DOI instead of the concept DOI. Corrected without a version bump on 2026-05-03 to point to the true concept DOI [10.5281/zenodo.19994787](https://doi.org/10.5281/zenodo.19994787). |
 | v0.2.3 | 2026-05-03 | Initially added a software cross-citation; reverted because the companion code repository is private and has no Zenodo deposit. Whitepaper concept DOI baked in is now stable. |
+| v0.5.0 | 2026-08-30 | Chapter 9 updated from four to **seven toxicology / regulatory sources + OECD index** (PubChem, EPA CompTox ToxValDB, ECHA C&L + ECHA CHEM, CIR, SCCS, CosIng, TFDA), aligned with the platform's public documentation; new **§9.1.3 CIR full-report full-text NOAEL extraction** (direct portal fetch, key-pages mode, forced tool-use extraction, three sanitize gates, coverage guard, write-back to cascade tier 0 and report §5-1 verbatim citations) with measured effect as of 2026-08-30 (326 reports, 1,331 cached ingredient rows carrying a CIR NOAEL, 71% of in-use ingredients linked); Chapters 14-15 no longer describe the CIR extraction layer as "almost empty" and reposition EPA ToxValDB as the second authoritative source. |
 | v0.4.0 | 2026-08-24 | Added Chapters 17-19 (bilingual zh-TW + en) covering capability shipped since v0.3: **Ch 17** the labeling and claims compliance engine (Art. 7 statutory elements vs the Art. 10 determination rule, Claude Vision label extraction, a 262-phrase L0030099 corpus, five-state verdicts, acknowledgement records, six real false negatives); **Ch 18** the billing model and service fulfilment layer (pricing per output, entitlement following the current balance, the product-slot ratchet, anti-arbitrage tiered refunds, vendor dispatch); **Ch 19** operational observability and edge topology (tenant footprint funnel on a single-source audit table, retention boundary enforced by a DB trigger, and one client-IP mistake producing three distinct harms). Also fixed four English chapters whose `**Navigation**` footers did not match the `concat.sh` strip rule and were leaking into the English PDF. |
 | v0.3.0 | 2026-07-06 | Added Chapters 14–16 (bilingual zh-TW + en) covering the toxicology safety-assessment engine shipped since v0.2: **Ch 14** NOAEL six-tier fallback cascade (read-across / structural similarity / qualitative authority / TTC), Margin-of-Safety with dermal-absorption (DAp) correction, and the fail-safe asymmetry doctrine; **Ch 15** regulatory correctness (EU disclosure-threshold vs concentration-limit, TFDA/EU/CIR authority hierarchy, EPA ToxValDB backfill, ECHA C&L structured harvesting auto-blocking 421 genotoxic + 684 CMR CAS); **Ch 16** self-driving evolution (agreement_rate, asymmetric learning, active re-grounding, computation-basis SSOT) with an honest boundary on what "autonomous" means without an SA sign-off feature. Concept DOI [10.5281/zenodo.19994787](https://doi.org/10.5281/zenodo.19994787) unchanged; v0.3.0 version DOI [10.5281/zenodo.21223127](https://doi.org/10.5281/zenodo.21223127). |
 

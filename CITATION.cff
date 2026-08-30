@@ -11,7 +11,9 @@ abstract: >-
   Technical whitepaper describing PIF AI, an open-source multi-tenant SaaS
   platform that uses Anthropic Claude (via the Claude API and developed
   with Claude Code), automated toxicology database queries
-  (PubChem, TFDA restricted/prohibited lists, ECHA, OECD), and a central
+  across seven toxicology / regulatory sources (PubChem, EPA CompTox
+  ToxValDB, ECHA, CIR full-report full-text NOAEL extraction, SCCS, CosIng,
+  TFDA restricted/prohibited lists) plus the OECD index, and a central
   RAG service to reduce Taiwan-regulated cosmetic Product Information File
   (PIF) documentation from 4–8 weeks to 3–5 business days, with an online
   Safety Assessor (SA) review and electronic signature workflow. Covers
@@ -40,9 +42,11 @@ keywords:
   - TFDA
   - ECHA
   - PubChem
+  - CIR
+  - NOAEL
   - Taiwan
-version: "0.4.1"
-date-released: "2026-08-29"
+version: "0.5.0"
+date-released: "2026-08-30"
 doi: "10.5281/zenodo.19994787"
 identifiers:
   - type: doi
@@ -63,7 +67,7 @@ preferred-citation:
       email: vincent.lin@baiyuan.com.tw
       affiliation: Baiyuan Tech
   year: 2026
-  month: 5
-  version: "0.2.3"
+  month: 8
+  version: "0.5.0"
   doi: "10.5281/zenodo.19994787"
   url: "https://doi.org/10.5281/zenodo.19994787"

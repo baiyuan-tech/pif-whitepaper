@@ -15,7 +15,7 @@ keywords:
   - "fail-safe"
   - "toxicology safety assessment"
 word_count: approx 3400
-last_updated: 2026-07-06
+last_updated: 2026-08-30
 last_modified_at: '2026-08-26T02:16:54Z'
 ---
 
@@ -152,7 +152,7 @@ The last item is particularly important: for a statutorily prohibited substance,
 
 ## 14.6 Observations and Limitations
 
-- **The authoritative-NOAEL extraction layer still has holes**: full-text extraction of CIR reports is not yet complete — PubChem often returns only the CIR generic landing-page URL and cannot reach the individual report PDF. Currently the gap is filled by live queries of EPA ToxValDB plus read-across; full-text extraction of CIR PDFs is a large task still pending.
+- **The hole in the authoritative-NOAEL extraction layer was filled in v0.5 (with residuals)**: at v0.3, full-text extraction of CIR reports was almost empty (PubChem returned only the generic CIR landing page) and the gap was covered by EPA ToxValDB and read-across. v0.5 fetches the full report PDFs directly from the CIR portal and extracts them (§9.1.3): as of 2026-08-30, 326 reports have been extracted and 1,331 cached ingredient rows carry a CIR NOAEL, so tier 0 of the cascade finally has authoritative numbers to use. **Residual limits**: 42% of reports contain only a qualitative conclusion (no numeric NOAEL; they still go to tier 2, qualitative authority); 12 scanned PDFs yield no text; roughly 450 in-use rows are still being processed at 25 rows every 6 hours; quarterly re-checks of the status pages spend money only on new reports.
 - **Over-flag calibration needs a human decision**: some conservative false positives (e.g., certain facial dosage forms falling to whole-body exposure) are on the safe side and are not a breach, but neither can they be eliminated by relaxing the threshold — because the authority has no corresponding exposure value. Relaxation must be verified case by case by a human toxicologist and cannot be auto-released by the engine.
 - **Never fabricate toxicological values (platform iron rule)**: any NOAEL / DAp / exposure value must have a real provenance (EPA POD, SCCS article, literature). Lowering DAp or borrowing via read-across must both come with a precise scope of applicability and basis, otherwise real hazards would falsely pass.
 - **Fallback is not relaxing safety**: the purpose of every fallback mechanism in this chapter is "eliminate the blank, give a traceable basis", not "let more ingredients pass". The direction of fail-safe is always to tighten, never to release.
@@ -173,6 +173,7 @@ The core value of the fallback constitution: **let the AI engine's toxicological
 | Version | Date | Summary |
 |:---:|:---:|---|
 | v0.3 | 2026-07-06 | First written. Covers the six-tier NOAEL fallback cascade, MoS margin and DAp correction, the fail-safe asymmetry principle, and the display-layer safety-basis rules. |
+| v0.5 | 2026-08-30 | First item of §14.6, "the authoritative-NOAEL extraction layer still has holes", rewritten as filled (CIR full-report full-text extraction, see §9.1.3) with the residual limits listed. |
 
 ---
 

@@ -89,7 +89,7 @@ git push git@github.com:baiyuan-tech/pif-whitepaper.git master
   背景:官方整合只封存原始碼 ZIP,不碰 release assets,導致 Zenodo 落地頁一直沒有
   `citation_pdf_url`,Google Scholar 因此抓不到全文(2026-08-26 實測確認並補齊)。
 - **PDF 頁首與標題頁日期由 `CITATION.cff` 推導**(build-pdf.yml 的 `Stamp version` 步驟),
-  不要再去改 `assets/pdf/metadata-*.yaml` 裡的 `ancyhead[R]{...}` 與 `date:` ——
+  不要再去改 `assets/pdf/metadata-*.yaml` 裡的 `fancyhead[R]{...}` 與 `date:` ——
   那兩個值曾寫死在 v0.1,導致 v0.2/v0.3/v0.4 的 PDF 頁首全印著 `v0.1 · 2026-04`。
   發版時只要更新 `CITATION.cff`,頁首自動跟上;錨點命中數不為 1 時 CI 會 fail-fast。
 - 結構刻意對齊姊妹專案 `baiyuan-tech/geo-whitepaper`（FORMAT.md 明載）。

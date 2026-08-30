@@ -6,7 +6,7 @@
   "headline": "PIF AI 技術白皮書 (繁體中文版)",
   "inLanguage": "zh-TW",
   "datePublished": "2026-04-19",
-  "dateModified": "2026-04-30",
+  "dateModified": "2026-08-30",
   "author": {"@type": "Person", "name": "Vincent Lin", "affiliation": "Baiyuan Tech"},
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "isPartOf": {"@type": "CreativeWorkSeries", "name": "Baiyuan Tech Whitepapers"},
@@ -53,7 +53,7 @@
 |:--:|------|------|
 | [07](ch07-ai-engine.md) | **AI 引擎** | Claude Tool Use、Claude Code 開發實踐、信心度評分 |
 | [08](ch08-multi-tenancy.md) | **資料庫與多租戶隔離** | Schema、Row-Level Security、`current_setting` 模式 |
-| [09](ch09-toxicology-pipeline.md) | **毒理資料 Pipeline** | PubChem / TFDA / ECHA / OECD 交叉查詢 |
+| [09](ch09-toxicology-pipeline.md) | **毒理資料 Pipeline** *(v0.5 更新)* | 七大資料源(PubChem / EPA CompTox / ECHA / CIR / SCCS / CosIng / TFDA)+ OECD 索引交叉查詢、CIR 完整報告全文 NOAEL 抽取 |
 | [10](ch10-central-rag.md) | **中心 RAG 整合架構** | 方案 C+ 隔離、兩 header 認證、fail-soft |
 
 ### 安全與合規流程 Part IV
@@ -102,7 +102,7 @@
 
 | 指標 | 目標 | 目前狀態 |
 |---|---|---|
-| 章節 | 19 章 + 4 附錄 | v0.4 完成 |
+| 章節 | 19 章 + 4 附錄 | v0.5 完成 |
 | 繁中字數 | 30,000+ 字 | v0.2 ≈ 33,800 字 |
 | 圖表 | 15+ Mermaid 圖 | v0.2 ≈ 16 張 |
 | 程式碼引用 | 40+ 條（格式 `file:line`） | v0.2 完成 |

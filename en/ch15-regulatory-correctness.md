@@ -15,7 +15,7 @@ keywords:
   - "CMR"
   - "false negative"
 word_count: approx 3300
-last_updated: 2026-07-06
+last_updated: 2026-08-30
 last_modified_at: '2026-08-26T02:16:54Z'
 ---
 
@@ -34,7 +34,7 @@ last_modified_at: '2026-08-26T02:16:54Z'
 - **Disclosure threshold ≠ concentration limit**: EU Annex III's "shall be indicated when concentration exceeds 0.001% leave-on / 0.01% rinse-off" for sensitizing fragrances is a **labeling disclosure requirement**, not a usage limit. Storing it as max=0.001 would falsely judge Menthol at 12% as over-limit.
 - **Positional parser**: first strip the "presence...shall be indicated" disclosure clause, then parse the remainder — because EU Annex III's real limit always precedes the disclosure marker. Of the 62 rows, 7 are a "disclosure clause + real limit" mixture, and the real value must be preserved to prevent a false negative.
 - **Authority hierarchy**: this system is for Taiwan TFDA registration. If TFDA has a limit and it is met → an EU / CIR over-limit is downgraded to advisory (export reference); **if TFDA has no limit → EU is still binding** (to prevent a false negative).
-- **EPA ToxValDB backfill**: the CIR full-text extraction layer is almost empty, so authoritative NOAELs are filled by EPA ToxValDB live queries; EPA's self-declared possibly-high flag verdicts are all fail-closed to review.
+- **EPA ToxValDB backfill**: at v0.3 the CIR full-text extraction layer was almost empty, so authoritative NOAELs were filled by EPA ToxValDB live queries; since v0.5, CIR full-report extraction (§9.1.3) is the first authoritative numeric source and EPA is the second, used when CIR has no numeric value; EPA's self-declared possibly-high flag verdicts are all fail-closed to review.
 - **Structured regulatory harvester**: scans ECHA C&L's 1125 carcinogenic classifications joined with CosIng, automatically deriving 421 genotoxic + 684 CMR prohibited CAS, replacing the hand-curated 2 entries, each carrying an ECHA C&L citation code.
 
 ## 15.1 A Disclosure Threshold Is Not a Concentration Limit
@@ -95,7 +95,7 @@ TFDA hard gates (severity high), the Annex II prohibited list, and CMR classific
 
 ## 15.3 EPA ToxValDB Backfill of Authoritative Values
 
-Chapter 14 noted that the authoritative-NOAEL extraction layer is almost empty: the noael column of `cir_reports` is largely 0 (PubChem returns only the CIR generic landing-page URL and cannot reach the individual reports). This makes many ingredients that could have been decided by an authoritative numeric value fall instead to AI read-across or even data_gap.
+Chapter 14 (v0.3) noted that the authoritative-NOAEL extraction layer was almost empty: the noael column of `cir_reports` was largely 0 (PubChem returned only the CIR generic landing-page URL and could not reach the individual reports). This made many ingredients that could have been decided by an authoritative numeric value fall instead to AI read-across or even data_gap. **v0.5 update**: that hole has been filled by direct CIR-portal fetching plus full-text extraction (§9.1.3; 1,331 cached ingredient rows carry a CIR NOAEL as of 2026-08-30). The EPA backfill mechanism described in this section is kept unchanged; its role is now the second authoritative numeric source, used when a CIR report has only a qualitative conclusion or has not yet been extracted, and both sources follow the same sanity and provenance rules.
 
 The fix (`noael_engine._epa_toxval_backfill`): before an ingredient falls to AI read-across, for those with "no authoritative numeric NOAEL", live-query EPA ToxValDB and merge the result into that ingredient's toxicological data, so the parser preferentially recognizes the authoritative value. EPA ToxValDB can even resolve a DTXSID from a chemical name (queryable even without a CAS), filling in a large block of ingredients that previously came up empty.
 
@@ -153,6 +153,7 @@ Verification method: end-to-end + adversarial regression. Menthol 12% over-limit
 | Version | Date | Summary |
 |:---:|:---:|---|
 | v0.3 | 2026-07-06 | First written. Covers disclosure threshold vs concentration limit, the positional parser, the TFDA/EU/CIR authority hierarchy, EPA ToxValDB backfill, ECHA C&L structured harvesting, filling the heavy-metal-salt hole, and the downgrade-limit false-negative-prevention iron rule. |
+| v0.5 | 2026-08-30 | "The CIR full-text extraction layer is almost empty" in §15.1 and §15.3 rewritten as filled (§9.1.3); EPA ToxValDB backfill repositioned as the second authoritative source when CIR has no numeric value. |
 
 ---
 

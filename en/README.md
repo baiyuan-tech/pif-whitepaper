@@ -6,7 +6,7 @@
   "headline": "PIF AI Whitepaper (English edition)",
   "inLanguage": "en",
   "datePublished": "2026-04-19",
-  "dateModified": "2026-04-30",
+  "dateModified": "2026-08-30",
   "author": {"@type": "Person", "name": "Vincent Lin", "affiliation": "Baiyuan Tech"},
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "isPartOf": {"@type": "CreativeWorkSeries", "name": "Baiyuan Tech Whitepapers"},
@@ -53,7 +53,7 @@
 |:--:|---------|-------|
 | [07](ch07-ai-engine.md) | **AI Engine** | Claude Tool Use, Claude Code engineering practice, confidence scoring |
 | [08](ch08-multi-tenancy.md) | **Database & Multi-Tenancy** | Schema, Row-Level Security, `current_setting` pattern |
-| [09](ch09-toxicology-pipeline.md) | **Toxicology Pipeline** | PubChem / TFDA / ECHA / OECD cross-query |
+| [09](ch09-toxicology-pipeline.md) | **Toxicology Pipeline** *(updated in v0.5)* | Seven-source cross-query (PubChem / EPA CompTox / ECHA / CIR / SCCS / CosIng / TFDA) + OECD index, CIR full-report full-text NOAEL extraction |
 | [10](ch10-central-rag.md) | **Central RAG Integration** | Scheme C+ isolation, dual-header auth, fail-soft |
 
 ### Part IV — Security & Compliance Process
@@ -103,7 +103,7 @@
 
 | Metric | Target | Current |
 |---|---|---|
-| Chapters | 19 chapters + 4 appendices | v0.4 complete |
+| Chapters | 19 chapters + 4 appendices | v0.5 complete |
 | English word count | 28,000+ words | v0.2 ≈ 32,000 words |
 | Figures | 15+ Mermaid diagrams | v0.2 ≈ 16 diagrams |
 | Code citations | 40+ (format `file:line`) | v0.2 complete |

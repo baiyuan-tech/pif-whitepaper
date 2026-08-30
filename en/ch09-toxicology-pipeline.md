@@ -1,6 +1,6 @@
 ---
 title: "Chapter 9: Toxicology Data Pipeline"
-description: "PubChem / TFDA local mirror / ECHA / OECD multi-database cross-query, caching, and AI risk-summary generation"
+description: "Concurrent cross-query of seven toxicology / regulatory sources (PubChem, EPA CompTox, ECHA, CIR, SCCS, CosIng, TFDA) plus the OECD index, CIR full-report full-text NOAEL extraction, caching, and AI risk-summary generation"
 chapter: 9
 lang: en
 authors:
@@ -10,10 +10,14 @@ keywords:
   - "TFDA"
   - "ECHA"
   - "OECD"
+  - "CIR"
+  - "SCCS"
+  - "EPA CompTox"
+  - "NOAEL extraction"
   - "toxicology"
   - "risk assessment"
-word_count: approx 1900
-last_updated: 2026-04-19
+word_count: approx 2900
+last_updated: 2026-08-30
 last_modified_at: '2026-08-26T02:16:54Z'
 ---
 
@@ -35,25 +39,34 @@ last_modified_at: '2026-08-26T02:16:54Z'
 
 # Chapter 9: Toxicology Data Pipeline
 
-> PIF Items 9 and 10 require per-ingredient substance-characterization and toxicology-endpoint data. This chapter explains how PIF AI concurrently queries four databases (PubChem, TFDA, ECHA, OECD), caches results, uses AI to synthesize them, and ultimately produces SA-reviewable risk-summary tables.
+> PIF Items 9 and 10 require per-ingredient substance-characterization and toxicology-endpoint data. This chapter explains how PIF AI concurrently queries seven toxicology / regulatory sources (PubChem, EPA CompTox, ECHA, CIR, SCCS, CosIng, TFDA) plus the OECD eChemPortal index, caches results, uses AI to synthesize them, and ultimately produces SA-reviewable risk-summary tables. Since v0.5 it also extracts NOAELs from the full text of CIR safety-assessment PDFs (§9.1.3), filling the authoritative-NOAEL layer that earlier versions admitted was almost empty.
 
 ## 📌 Key Takeaways
 
-- Four-database division: PubChem (physicochemical + partial tox), TFDA (regulatory compliance), ECHA (EU C&L), OECD (eChemPortal cross-check)
+- Seven-source division: PubChem (physicochemical + partial tox), EPA CompTox ToxValDB (authoritative PODs), ECHA C&L + ECHA CHEM (EU classification), CIR (QRT conclusions + full reports), SCCS (opinions), CosIng (EU annexes), TFDA (Taiwan lists), with OECD eChemPortal as a cross-country index
+- CIR full-report extraction (v0.5): PDFs fetched directly from the CIR portal → forced Claude tool-use extraction → three sanitize gates; as of 2026-08-30, 326 reports extracted and 1,331 cached ingredient rows carry a CIR NOAEL (zero a week earlier)
 - Caching: 30-day TTL + stale-while-revalidate, reducing rate-limit exposure
 - AI synthesis: Claude Sonnet 4 consolidates multi-source → structured risk summary with cited sources
 - Failure degradation: a single source failure does not halt the pipeline; marked "[source temporarily unavailable]"
 
 ## 9.1 Source Division of Labor
 
-### 9.1.1 Four-Database Comparison
+### 9.1.1 Seven-Source Comparison (updated in v0.5)
 
-| Database | Owner | Content | License | PIF Items |
+The four sources of v0.1 (PubChem / TFDA / ECHA / OECD) grew across v0.3–v0.5 into seven sources plus the OECD index, matching the platform's public documentation (website, legal-references page). The "content" column lists what this system **actually consumes**, not everything each database offers.
+
+| Source | Organization | Content consumed by this system | License | PIF Items |
 |---|---|---|---|---|
-| **PubChem** | US NIH | Physicochemical, GHS, partial LD50 | Public, free | 9, 10 |
-| **TFDA Lists** | MOHW Taiwan | Restricted / prohibited / preservative / colorant / UV filter lists | Public, local mirror | 3, 10 |
-| **ECHA C&L Inventory** | EU ECHA | Classification & labelling, SCCS Opinions | Registered account, rate-limited | 10 |
-| **OECD eChemPortal** | OECD | Cross-country chemical test database | Public but subject to national terms | 10 |
+| **PubChem** | US NIH | Physicochemical properties, GHS, partial LD50; CAS / synonym resolution | Public, free | 9, 10 |
+| **EPA CompTox (ToxValDB)** | US EPA | Authoritative PODs (NOAEL / LOAEL) with study provenance; DTXSID resolvable from a chemical name; second authoritative source when CIR has no numeric value (§15.3) | Public, free | 10 |
+| **ECHA C&L Inventory + ECHA CHEM (Annex VI)** | EU ECHA | Classification & labelling; harmonised classifications drive automatic CMR / genotoxic blocking (§15.4) | Public, rate-limited | 10 |
+| **CIR (QRT conclusions + full reports)** | US Cosmetic Ingredient Review Expert Panel | 5,919 ingredient conclusions (Quick Reference Table); **full-text extraction of NOAELs and primary-study citations from the full report PDFs (v0.5, §9.1.3)** | Public | 10 |
+| **SCCS Opinions** | EU Scientific Committee on Consumer Safety | Conclusions, NOAELs and MoS methodology from 54 opinions | Public | 10 |
+| **CosIng (Annexes II–VI)** | European Commission | Prohibited / restricted / preservatives / colorants / UV filters; fragrance-allergen disclosure (Chapter 7) | Public | 3, 10 |
+| **TFDA Lists** | MOHW Taiwan | Prohibited / restricted / preservative / colorant / UV-filter lists (local mirror, §9.1.2) | Public | 3, 10 |
+| *OECD eChemPortal (index)* | OECD | Cross-country test-data index pointing to original dossiers; not used as a numeric source | Public but subject to national terms | 10 |
+
+The failure contract is the same for every live source: a failed query is cached with a short 1-hour TTL, **must never overwrite an existing LD50 / NOAEL, and must never emit a "completed" progress marker**; scanned documents and sources that yield no text are honestly labelled "not sent to AI, not guessed".
 
 ### 9.1.2 TFDA Local Mirror
 
@@ -80,6 +93,35 @@ class TfdaRegulatedIngredient(Base):
     last_synced_at: Mapped[datetime]
 ```
 
+### 9.1.3 CIR Full-Report Full-Text NOAEL Extraction (new in v0.5)
+
+Chapter 14's v0.3 "Observations and Limitations" admitted that the authoritative-NOAEL extraction layer was almost empty: PubChem returned only the generic CIR landing page for CIR, the individual report PDFs were unreachable, the NOAEL column of `cir_reports` was mostly empty, and ingredients fell through to the EPA backfill, read-across or even data_gap. v0.5 **bypasses PubChem and fetches reports directly from the CIR portal (cir-reports.cir-safety.org)**:
+
+1. **Index and status pages**: read the portal's ingredient index (7,933 rows across two pages) and each ingredient's status page (`cirIngredientStatusReport`) to obtain the report attachment list.
+2. **Attachment selection**: prefer the full safety-assessment report; "Re-review Not Opened" compilations carry no new toxicology data and are neither fetched nor sent to AI; an attachment shared by several ingredients is extracted once (on average 4.0 ingredients share one report, up to 133).
+3. **Text extraction**: pypdf (26 pages on average); scanned PDFs with no text layer are labelled `skipped_scanned` — never guessed.
+4. **Key-pages mode**: only the first and last 5 pages, pages containing NOAEL / NOEL / LOAEL, and summary / conclusion / discussion pages are sent (91.5k characters on average), about US$0.10 per report.
+5. **AI extraction**: Claude with a forced tool call (`submit_cir_report_extraction`) returns structured fields — the lowest systemic repeated-dose NOAEL, unit, route, species, study type, verbatim evidence sentence and covered substances; a NOEL is accepted only when no NOAEL exists.
+6. **Three sanitize gates** (anti-hallucination): the unit must belong to the mg/kg bw/day family (g/kg and µg/kg are converted); the value must be ≤ 10,000; **the number must appear verbatim in the PDF text**; non-systemic endpoints are rejected.
+7. **Coverage guard**: the substances covered by a report are matched through name variants (Latin / English, parenthetical aliases); an ingredient absent from the coverage list is marked `report_mismatch` rather than inheriting another report's NOAEL.
+8. **Write-back**: results land in `cir_report_attachments` (deduplicated by attachment id) and are pushed through a single assembly function into `ingredient_tox_cache.cir_data`, feeding tier 0 of the NOAEL cascade and the report's §5-1 "primary study data (verbatim citations)" section (citation, route, species, study, evidence sentence).
+
+Measured effect as of 2026-08-30 (production; extraction continues at 25 rows every 6 hours, in-use ingredients first):
+
+| Metric | Value |
+|---|---|
+| CIR full reports extracted | 326 (26 pages / 91.5k characters on average) |
+| Reports yielding a numeric NOAEL | 189 (58%; the rest are qualitative conclusions) |
+| In-use ingredients with a CIR entry | 1,998, of which 1,414 (71%) are linked to a full report |
+| Cached ingredient rows carrying a CIR NOAEL | 1,331 (zero at v0.4) |
+| Honest exclusions | 12 scanned PDFs; 57 reports awaiting retry after a provider outage |
+
+**Cost and provider resilience**: extraction runs only for ingredients that have already entered the toxicology cache (in use), not across the whole 6,106-row index; provider-level failures (exhausted credit, invalid key, 429, 5xx) are not counted against the individual report, the batch stops and backs off, so retryable reports are never pushed into a permanent-failure state.
+
+### 9.1.4 Retiring the Legacy Path
+
+The pre-v0.5 PubChem-mediated CIR path remains only for the few cases where PubChem provides a direct per-report PDF URL; any URL pointing at the portal is handed to the §9.1.3 extractor (portal pages are a JavaScript shell, and what the legacy path fetched was never a report). The rule is locked by tests so the two paths cannot overwrite each other.
+
 ## 9.2 Pipeline Overview
 
 ```mermaid
@@ -92,7 +134,10 @@ flowchart TB
     TF[TFDA local]
     EC[ECHA API]
     OE[OECD eChemPortal]
-    AI[Claude Sonnet 4<br/>Tool Use synthesis]
+    EP[EPA ToxValDB]
+    CR[CIR full text<br/>v0.5]
+    SC[SCCS / CosIng]
+    AI[Claude Sonnet<br/>Tool Use synthesis]
     SUM[Structured risk summary]
     DB[(toxicology_cache)]
     UI[SA review UI]
@@ -104,14 +149,20 @@ flowchart TB
     PAR --> TF
     PAR --> EC
     PAR --> OE
+    PAR --> EP
+    PAR --> CR
+    PAR --> SC
     PC --> AI
     TF --> AI
     EC --> AI
     OE --> AI
+    EP --> AI
+    CR --> AI
+    SC --> AI
     AI --> SUM --> DB --> UI
 ```
 
-**Figure 9.1**: The pipeline is concurrency-driven — four databases are queried in parallel, total latency ≈ max(four) rather than sum. The AI synthesis stage uses Tool Use and cites each conclusion. Cache layer has 30-day TTL.
+**Figure 9.1**: The pipeline is concurrency-driven — the seven sources are queried in parallel, total latency ≈ max(sources) rather than sum; CIR full-text extraction (v0.5) is an offline background job, and queries only read the cache it writes back. The AI synthesis stage uses Tool Use and cites each conclusion. Cache layer has 30-day TTL.
 
 ## 9.3 Concurrent Query Implementation
 
@@ -307,6 +358,7 @@ async def check_formula_compliance(
 | Version | Date | Summary |
 |:---:|:---:|---|
 | v0.1 | 2026-04-19 | First draft. Four sources, concurrency, caching, AI synthesis, rule engine |
+| v0.5 | 2026-08-30 | §9.1.1 updated from four sources to seven sources + OECD index (aligned with the website); new §9.1.3 CIR full-report full-text NOAEL extraction (direct portal fetch, key-pages mode, three sanitize gates, coverage guard, provider resilience) with measured effect as of 2026-08-30; §9.1.4 legacy-path retirement; Figure 9.1 sources completed. |
 
 ---
 

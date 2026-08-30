@@ -1,6 +1,6 @@
 ---
 title: "第 9 章：毒理資料 Pipeline"
-description: "PubChem / TFDA 本地映射 / ECHA / OECD 多資料庫交叉查詢、快取策略、風險摘要生成"
+description: "七大毒理／法規資料源(PubChem、EPA CompTox、ECHA、CIR、SCCS、CosIng、TFDA)+ OECD 索引的並發交叉查詢、CIR 完整報告全文 NOAEL 抽取、快取策略、風險摘要生成"
 chapter: 9
 lang: zh-TW
 authors:
@@ -10,10 +10,14 @@ keywords:
   - "TFDA"
   - "ECHA"
   - "OECD"
+  - "CIR"
+  - "SCCS"
+  - "EPA CompTox"
+  - "NOAEL 抽取"
   - "毒理"
   - "risk assessment"
-word_count: approx 2400
-last_updated: 2026-04-19
+word_count: approx 3600
+last_updated: 2026-08-30
 last_modified_at: '2026-08-26T02:16:54Z'
 ---
 
@@ -35,25 +39,34 @@ last_modified_at: '2026-08-26T02:16:54Z'
 
 # 第 9 章：毒理資料 Pipeline
 
-> PIF 第 9、10 項要求對每個成分的物質特性與毒理終點提供資料。本章說明 PIF AI 如何從四大資料庫（PubChem、TFDA、ECHA、OECD）並發查詢、快取、AI 綜合，並最終產出可供 SA 審閱的風險摘要表。
+> PIF 第 9、10 項要求對每個成分的物質特性與毒理終點提供資料。本章說明 PIF AI 如何從七大毒理／法規資料源（PubChem、EPA CompTox、ECHA、CIR、SCCS、CosIng、TFDA）與 OECD eChemPortal 索引並發查詢、快取、AI 綜合，並最終產出可供 SA 審閱的風險摘要表。v0.5 起新增 CIR 完整報告 PDF 的全文 NOAEL 抽取（§9.1.3），把過去「幾乎是空的」權威 NOAEL 擷取層填實。
 
 ## 📌 本章重點
 
-- 四資料庫分工：PubChem（物理化學 + 部分毒性）、TFDA（法規合規）、ECHA（EU C&L 分類）、OECD（eChemPortal 交叉）
+- 七大資料源分工：PubChem（物理化學 + 部分毒性）、EPA CompTox ToxValDB（權威 POD）、ECHA C&L + ECHA CHEM（EU 分類）、CIR（QRT 結論 + 完整報告全文）、SCCS（意見書）、CosIng（EU Annex）、TFDA（台灣清冊），OECD eChemPortal 作跨國索引
+- CIR 完整報告全文抽取（v0.5）：入口站直抓 PDF → Claude 強制 tool-use 抽取 → 三道 sanitize；截至 2026-08-30 已抽 326 份報告、1,331 個快取成分列帶有 CIR NOAEL（一週前為 0）
 - 快取策略：30 天 TTL + stale-while-revalidate，降低 rate limit 風險
 - AI 綜合：Claude Sonnet 4 匯整多源 → 結構化風險摘要，每結論引註來源
 - 失敗降級：單一資料庫故障不阻斷整體，以「[來源暫不可用]」標記
 
 ## 9.1 資料源分工
 
-### 9.1.1 四大資料庫比較
+### 9.1.1 七大資料源比較（v0.5 更新）
 
-| 資料庫 | 機構 | 內容 | 許可 | PIF 對應項 |
+v0.1 的四源（PubChem / TFDA / ECHA / OECD）在 v0.3–v0.5 擴充為七大資料源 + OECD 索引，與平台對外文件（官網、法規參考頁）一致。「內容」欄寫的是本系統**實際取用**的部分，而非該資料庫的全部。
+
+| 資料源 | 機構 | 本系統取用內容 | 許可 | PIF 對應項 |
 |---|---|---|---|---|
-| **PubChem** | 美國 NIH | 化合物物理化學屬性、GHS 分類、部分毒性 LD50 | 公開免費 | 第 9、10 項 |
-| **TFDA 清冊** | 台灣衛福部 | 禁用／限用／防腐劑／著色劑／紫外線濾劑清單 | 公開，本地映射 | 第 3、10 項 |
-| **ECHA C&L Inventory** | 歐盟化學品管理局 | 分類與標示、SCCS Opinion | 註冊帳號、有 rate limit | 第 10 項 |
-| **OECD eChemPortal** | OECD | 跨國化學品試驗資料庫 | 公開但需遵守各國條款 | 第 10 項 |
+| **PubChem** | 美國 NIH | 物化屬性、GHS 分類、部分 LD50；CAS／同義詞解析 | 公開免費 | 第 9、10 項 |
+| **EPA CompTox（ToxValDB）** | 美國環保署 | 權威 POD（NOAEL／LOAEL）與研究出處；可由化學名解 DTXSID；CIR 無數值時的第二權威源（§15.3） | 公開免費 | 第 10 項 |
+| **ECHA C&L Inventory + ECHA CHEM（Annex VI）** | 歐盟化學總署 | 分類與標示；調和分類自動推導 CMR／基因毒封鎖（§15.4） | 公開，有 rate limit | 第 10 項 |
+| **CIR（QRT 結論 + 完整報告全文）** | 美國 Cosmetic Ingredient Review Expert Panel | 5,919 筆成分結論（Quick Reference Table）；**完整報告 PDF 全文抽取 NOAEL 與原始研究引文（v0.5，§9.1.3）** | 公開 | 第 10 項 |
+| **SCCS Opinions** | 歐盟消費者安全科學委員會 | 54 份意見書之結論、NOAEL 與 MoS 方法論 | 公開 | 第 10 項 |
+| **CosIng（Annex II–VI）** | 歐盟執委會 | 禁用／限用／防腐劑／著色劑／UV 濾劑；香氛過敏原揭示（第 7 章） | 公開 | 第 3、10 項 |
+| **TFDA 清冊** | 台灣衛福部 | 禁用／限用／防腐劑／著色劑／紫外線濾劑（本地映射，§9.1.2） | 公開 | 第 3、10 項 |
+| *OECD eChemPortal（索引）* | OECD | 跨國試驗資料索引，導向原始 dossier；不作數值來源 | 公開但需遵守各國條款 | 第 10 項 |
+
+失敗契約對所有 live 源一致：查詢失敗寫 1 小時短 TTL 快取、**不得覆蓋既有 LD50／NOAEL、不得發「已完成」進度標記**；掃描件與抽不出文字的來源誠實標記「不送 AI、不猜」。
 
 ### 9.1.2 TFDA 本地映射
 
@@ -80,6 +93,35 @@ class TfdaRegulatedIngredient(Base):
     last_synced_at: Mapped[datetime]
 ```
 
+### 9.1.3 CIR 完整報告全文 NOAEL 抽取（v0.5 新增）
+
+第 14 章 v0.3 的「觀察與限制」承認：權威 NOAEL 擷取層幾乎是空的，因為 PubChem 對 CIR 只回通用首頁 URL，抓不到個別報告 PDF；`cir_reports` 的 NOAEL 欄大量為空，成分只能落到 EPA backfill、read-across 甚至 data_gap。v0.5 改為**不經 PubChem，直接對 CIR 入口站（cir-reports.cir-safety.org）取報告**：
+
+1. **索引與狀態頁**：讀取入口站成分索引（兩頁共 7,933 筆）與每個成分的狀態頁（`cirIngredientStatusReport`），取得報告附件清單。
+2. **挑選附件**：偏好「完整安全評估報告」；「Re-review Not Opened」彙編沒有新毒理資料，不抓、不送 AI；同一份附件被多個成分共用時只抽一次（平均 4.0 個成分共用一份，最多 133 個）。
+3. **抽文字**：pypdf 抽取（平均 26 頁）；抽不出文字的掃描件標 `skipped_scanned`，不猜。
+4. **關鍵頁模式**：只送首尾各 5 頁 + 含 NOAEL／NOEL／LOAEL 的頁 + summary／conclusion／discussion 頁（平均 91.5k 字元），每份約 US$0.10。
+5. **AI 抽取**：Claude 以強制 tool-use（`submit_cir_report_extraction`）輸出結構化欄位：最低全身性重複劑量 NOAEL、單位、給藥途徑、物種、研究類型、逐字證據句、涵蓋物質；只有在無 NOAEL 時才接受 NOEL。
+6. **三道 sanitize**（防幻覺）：單位必須是 mg/kg bw/day 家族（含 g/kg、µg/kg 換算）；數值 ≤ 10,000；**數字必須逐字出現在 PDF 內文**；非全身性終點一律拒用。
+7. **涵蓋守門**：報告涵蓋物質經名稱變體（拉丁／英文、括號別名）比對，成分不在涵蓋名單者標 `report_mismatch`，不把別的報告的 NOAEL 掛到它頭上。
+8. **回灌**：結果寫入 `cir_report_attachments`（以附件 id 去重），經單一組裝函式刷進 `ingredient_tox_cache.cir_data`，供 NOAEL cascade 第 0 階與報告 §5-1「原始研究數據引用」逐字引用（引文、途徑、物種、研究、證據句）。
+
+截至 2026-08-30 的實際效果（PROD，抽取仍以在用成分優先、每 6 小時 25 列持續進行）：
+
+| 指標 | 數值 |
+|---|---|
+| 已抽取的 CIR 完整報告 | 326 份（平均 26 頁、91.5k 字元） |
+| 其中抽到數值 NOAEL | 189 份（58%；其餘為定性結論） |
+| 在用成分對得上 CIR 者 | 1,998 個，其中 1,414 個（71%）已連結完整報告 |
+| 快取層帶有 CIR NOAEL 的成分列 | 1,331 列（v0.4 時為 0） |
+| 誠實排除 | 掃描件 12 份；額度中斷待重試 57 份 |
+
+**成本與供應商韌性**：抽取只對「已進入毒理快取的在用成分」執行，不對整個 6,106 筆索引無差別掃描；LLM 供應商層級的失敗（額度用罄、金鑰失效、429、5xx）不計入該份報告的失敗次數，整批中止並退避，避免把可重試的報告推成永久失敗。
+
+### 9.1.4 舊路徑的退場
+
+v0.5 之前經 PubChem 的 CIR 路徑仍保留給「PubChem 直接給出個別報告 PDF URL」的少數案例；凡 URL 指向入口站者一律交給 §9.1.3 的抽取器（入口站頁面是 JavaScript 殼，舊路徑抓到的不是報告）。這條規則以測試鎖死，避免兩條路徑互相覆寫。
+
 ## 9.2 Pipeline 全貌
 
 ```mermaid
@@ -92,7 +134,10 @@ flowchart TB
     TF[TFDA 本地表]
     EC[ECHA API]
     OE[OECD eChemPortal]
-    AI[Claude Sonnet 4<br/>Tool Use 綜合]
+    EP[EPA ToxValDB]
+    CR[CIR 全文抽取<br/>v0.5]
+    SC[SCCS / CosIng]
+    AI[Claude Sonnet<br/>Tool Use 綜合]
     SUM[結構化風險摘要]
     DB[(toxicology_cache)]
     UI[SA 審閱介面]
@@ -104,14 +149,20 @@ flowchart TB
     PAR --> TF
     PAR --> EC
     PAR --> OE
+    PAR --> EP
+    PAR --> CR
+    PAR --> SC
     PC --> AI
     TF --> AI
     EC --> AI
     OE --> AI
+    EP --> AI
+    CR --> AI
+    SC --> AI
     AI --> SUM --> DB --> UI
 ```
 
-**圖 9.1 說明**：Pipeline 以並發查詢為核心 — 四資料庫同時打，總延遲 ≈ max(四者) 而非 sum。AI 綜合階段採 Tool Use，每個結論引註來源。快取層採 30 天 TTL，減少重複打 API。
+**圖 9.1 說明**：Pipeline 以並發查詢為核心 — 七大資料源同時打，總延遲 ≈ max(各源) 而非 sum；CIR 全文抽取（v0.5）為離線背景作業，查詢時只讀已回灌的快取。AI 綜合階段採 Tool Use，每個結論引註來源。快取層採 30 天 TTL，減少重複打 API。
 
 ## 9.3 並發查詢實作
 
@@ -308,6 +359,7 @@ async def check_formula_compliance(
 | 版本 | 日期 | 摘要 |
 |:---:|:---:|---|
 | v0.1 | 2026-04-19 | 首次撰寫。涵蓋四資料源、並發查詢、快取、AI 綜合、法規規則引擎 |
+| v0.5 | 2026-08-30 | §9.1.1 由四源更新為七大資料源 + OECD 索引（與官網一致）；新增 §9.1.3 CIR 完整報告全文 NOAEL 抽取（入口站直抓、關鍵頁模式、三道 sanitize、涵蓋守門、供應商韌性）與截至 2026-08-30 的實際效果；§9.1.4 舊路徑退場；圖 9.1 補齊資料源。 |
 
 ---
 

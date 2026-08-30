@@ -5,7 +5,7 @@ appendix: D
 lang: zh-TW
 authors:
   - "Vincent Lin"
-last_updated: 2026-04-19
+last_updated: 2026-08-30
 last_modified_at: '2026-08-26T02:16:54Z'
 ---
 
@@ -28,6 +28,19 @@ last_modified_at: '2026-08-26T02:16:54Z'
 # 附錄 D：變更紀錄
 
 > 本附錄為白皮書之完整版本歷史。格式遵循 [Keep a Changelog](https://keepachangelog.com/) 慣例。
+
+## v0.5 — 2026-08-30
+
+### 新增
+
+- **第 9 章 §9.1.3「CIR 完整報告全文 NOAEL 抽取」**(zh-TW + en 雙語)— 不經 PubChem、直接對 CIR 入口站取索引／狀態頁／附件 PDF;偏好完整報告、跳過「Re-review Not Opened」彙編;pypdf 抽文字、掃描件誠實排除;關鍵頁模式(每份約 US$0.10);Claude 強制 tool-use 抽取最低全身性重複劑量 NOAEL 與逐字證據;三道 sanitize(單位家族、≤ 10,000、數字必逐字出現在 PDF);涵蓋守門(名稱變體比對,不掛錯報告);回灌快取供 cascade 第 0 階與報告 §5-1 逐字引用;截至 2026-08-30 的實際效果(326 份報告、189 份含數值 NOAEL、1,331 個快取成分列帶 CIR NOAEL、在用成分 71% 已連結);只抽在用成分與供應商層級失敗不計次的韌性設計。
+- 第 9 章 §9.1.4「舊路徑的退場」;圖 9.1 補齊 EPA / CIR / SCCS / CosIng 節點。
+
+### 修正
+
+- **第 9 章 §9.1.1 由「四大資料庫」更新為「七大資料源 + OECD 索引」**(PubChem、EPA CompTox ToxValDB、ECHA C&L + ECHA CHEM、CIR、SCCS、CosIng、TFDA),與官網、法規參考頁一致;「內容」欄改寫為本系統實際取用的部分,並補失敗契約。
+- 第 14 章 §14.6、第 15 章 §15.1 / §15.3:「CIR 全文擷取層幾乎是空的」改為已於 v0.5 填實,列出殘餘限制;EPA ToxValDB backfill 定位為 CIR 無數值時的第二權威源。
+- 主 / zh-TW / en README 目錄摘要、引用版本同步至 v0.5.0;`CITATION.cff` 與 `.zenodo.json` 摘要補七大資料源與 CIR 全文抽取。
 
 ## v0.4 — 2026-08-24
 

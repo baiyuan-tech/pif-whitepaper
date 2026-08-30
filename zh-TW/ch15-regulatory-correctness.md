@@ -15,7 +15,7 @@ keywords:
   - "CMR"
   - "偽陰"
 word_count: approx 3300
-last_updated: 2026-07-06
+last_updated: 2026-08-30
 last_modified_at: '2026-08-26T02:16:54Z'
 ---
 
@@ -34,7 +34,7 @@ last_modified_at: '2026-08-26T02:16:54Z'
 - **揭示門檻 ≠ 濃度上限**:EU Annex III 對致敏香料的「shall be indicated when concentration exceeds 0.001% leave-on / 0.01% rinse-off」是**標籤揭示規定**,不是使用上限。誤存為 max=0.001 會讓 Menthol 12% 假性判超標。
 - **positional parser**:先剝除「presence...shall be indicated」揭示子句,再解析剩餘——因為 EU Annex III 的真實限值恆在揭示標記之前。62 列中 7 列是「揭示句 + 真實限值」混合,務必保留真值防偽陰。
 - **權威階層**:本系統是台灣 TFDA 註冊用途。TFDA 有限值且達標 → EU / CIR 超標降 advisory(外銷參考);**TFDA 無限值 → EU 仍 binding**(防偽陰)。
-- **EPA ToxValDB backfill**:CIR 全文擷取層幾乎是空的,權威 NOAEL 靠 EPA ToxValDB live 查補足;EPA 自承可能偏高的 flag verdict 一律 fail-closed 退 review。
+- **EPA ToxValDB backfill**:v0.3 時 CIR 全文擷取層幾乎是空的,權威 NOAEL 靠 EPA ToxValDB live 查補足;v0.5 起 CIR 完整報告全文抽取(§9.1.3)成為第一權威數值源,EPA 退居「CIR 無數值時」的第二權威源;EPA 自承可能偏高的 flag verdict 一律 fail-closed 退 review。
 - **結構化法規採集器**:掃 ECHA C&L 1125 筆致癌分類 join CosIng,自動推導 421 個基因毒 + 684 個 CMR 禁用 CAS,取代 hand-curated 的 2 筆,每筆帶 ECHA C&L 引用碼。
 
 ## 15.1 揭示門檻不是濃度上限
@@ -95,7 +95,7 @@ TFDA 硬閘門(severity high)、Annex II 禁用清單、CMR 分類——這些�
 
 ## 15.3 EPA ToxValDB 補權威值
 
-第 14 章提到,權威 NOAEL 擷取層幾乎是空的:`cir_reports` 的 noael 欄大量為 0(PubChem 只回 CIR 通用首頁 URL,抓不到個別報告)。這使許多成分本可用權威數值判定,卻落到 AI read-across 甚至 data_gap。
+第 14 章 v0.3 提到,權威 NOAEL 擷取層幾乎是空的:`cir_reports` 的 noael 欄大量為 0(PubChem 只回 CIR 通用首頁 URL,抓不到個別報告)。這使許多成分本可用權威數值判定,卻落到 AI read-across 甚至 data_gap。**v0.5 更新**:此洞已由 CIR 入口站直抓 + 全文抽取填實(§9.1.3,截至 2026-08-30 有 1,331 個快取成分列帶 CIR NOAEL);本節的 EPA backfill 機制原封保留,現在的角色是「CIR 報告只有定性結論或尚未抽到時」的第二權威數值源,兩者皆走同一條 sanity 與 provenance 規則。
 
 修補(`noael_engine._epa_toxval_backfill`):在成分落 AI read-across 之前,對「無權威數值 NOAEL」者 live 查 EPA ToxValDB,把結果 merge 進該成分的毒理資料,讓解析器優先認列權威值。EPA ToxValDB 甚至能以化學名解出 DTXSID(無 CAS 也能查),補上一大塊過去落空的成分。
 
@@ -153,6 +153,7 @@ lookup 的 merge 優先序:**hand-curated > 基因毒 / CMR 排除 > harvested**
 | 版本 | 日期 | 摘要 |
 |:---:|:---:|---|
 | v0.3 | 2026-07-06 | 首次撰寫。涵蓋揭示門檻 vs 濃度上限、positional parser、TFDA/EU/CIR 權威階層、EPA ToxValDB backfill、ECHA C&L 結構化採集、重金屬鹽補洞與降級限值防偽陰鐵則。 |
+| v0.5 | 2026-08-30 | §15.1 與 §15.3 的「CIR 全文擷取層幾乎是空的」改為已填實(§9.1.3);EPA ToxValDB backfill 定位為 CIR 無數值時的第二權威源。 |
 
 ---
 

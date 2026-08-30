@@ -5,7 +5,7 @@ appendix: D
 lang: en
 authors:
   - "Vincent Lin"
-last_updated: 2026-04-19
+last_updated: 2026-08-30
 last_modified_at: '2026-08-26T02:16:54Z'
 ---
 
@@ -28,6 +28,19 @@ last_modified_at: '2026-08-26T02:16:54Z'
 # Appendix D: Changelog
 
 > Complete version history. Format follows [Keep a Changelog](https://keepachangelog.com/).
+
+## v0.5 — 2026-08-30
+
+### Added
+
+- **Chapter 9 §9.1.3, "CIR Full-Report Full-Text NOAEL Extraction"** (zh-TW + en) — bypassing PubChem and fetching the index / status pages / attachment PDFs directly from the CIR portal; preferring full reports and skipping "Re-review Not Opened" compilations; pypdf text extraction with honest exclusion of scanned documents; key-pages mode (about US$0.10 per report); forced Claude tool-use extraction of the lowest systemic repeated-dose NOAEL with a verbatim evidence sentence; three sanitize gates (unit family, ≤ 10,000, the number must appear verbatim in the PDF); a coverage guard (name-variant matching, never attaching another report's NOAEL); write-back into the cache for cascade tier 0 and the report's §5-1 verbatim citations; measured effect as of 2026-08-30 (326 reports, 189 with a numeric NOAEL, 1,331 cached ingredient rows carrying a CIR NOAEL, 71% of in-use ingredients linked); resilience design (in-use ingredients only, provider-level failures not counted).
+- Chapter 9 §9.1.4, "Retiring the Legacy Path"; Figure 9.1 completed with EPA / CIR / SCCS / CosIng nodes.
+
+### Fixed
+
+- **Chapter 9 §9.1.1 updated from "four databases" to "seven sources + OECD index"** (PubChem, EPA CompTox ToxValDB, ECHA C&L + ECHA CHEM, CIR, SCCS, CosIng, TFDA), aligned with the website and legal-references page; the "content" column now lists what the system actually consumes, plus the failure contract.
+- Chapter 14 §14.6 and Chapter 15 §15.1 / §15.3: "the CIR full-text extraction layer is almost empty" rewritten as filled in v0.5 with residual limits listed; EPA ToxValDB backfill repositioned as the second authoritative source when CIR has no numeric value.
+- Root / zh-TW / en README chapter summaries and citation version synchronised to v0.5.0; `CITATION.cff` and `.zenodo.json` abstracts now mention the seven sources and CIR full-text extraction.
 
 ## v0.4 — 2026-08-24
 
