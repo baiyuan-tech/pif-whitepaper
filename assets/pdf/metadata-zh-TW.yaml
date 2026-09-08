@@ -6,6 +6,7 @@
 title: "PIF AI 技術白皮書"
 subtitle: "多租戶 AI 輔助化粧品 PIF 建檔平台"
 author: "Vincent Lin（百原科技）"
+classoption: [notitlepage]   # Google Scholar: title, authors and abstract on the first page
 date: "2026-04-19"
 
 # lang: zh-Hant-TW (not zh-TW) avoids Pandoc auto-loading the ctex hook that

@@ -13,6 +13,18 @@ description: >-
   full-stack development with Anthropic Claude Code.
 url: "https://baiyuan-tech.github.io"
 baseurl: "/pif-whitepaper"
+
+# Google Scholar bibliographic metadata, emitted as <meta name="citation_*"> on the
+# index page by _includes/head-custom.html. Keep version/date in sync with CITATION.cff
+# on every release. pdf_url is the stable "latest release" redirect (always the newest PDF).
+citation:
+  title: "PIF AI: A Multi-Tenant AI-Assisted Platform for Accelerating Cosmetic Product Information File Documentation Under Taiwan Cosmetic Hygiene and Safety Act"
+  author: "Lin, Vincent"
+  institution: "Baiyuan Technology"
+  date: "2026/09/08"
+  version: "0.5.1"
+  doi: "10.5281/zenodo.19994787"
+  pdf_url: "https://github.com/baiyuan-tech/pif-whitepaper/releases/latest/download/whitepaper-en.pdf"
 lang: zh-Hant-TW
 
 # Author metadata surfaced by jekyll-seo-tag into <meta> and JSON-LD.

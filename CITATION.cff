@@ -3,10 +3,7 @@ message: >-
   If you use this whitepaper in academic or industry publications, please cite
   it as below. For the underlying software citation, see the companion code
   repository at https://github.com/baiyuan-tech/pif.
-title: >-
-  PIF AI Whitepaper: A Multi-Tenant AI-Assisted Platform for Cosmetic
-  Product Information File Documentation Under Taiwan's Cosmetic Hygiene
-  and Safety Act
+title: "PIF AI: A Multi-Tenant AI-Assisted Platform for Accelerating Cosmetic Product Information File Documentation Under Taiwan Cosmetic Hygiene and Safety Act"
 abstract: >-
   Technical whitepaper describing PIF AI, an open-source multi-tenant SaaS
   platform that uses Anthropic Claude (via the Claude API and developed
@@ -45,8 +42,8 @@ keywords:
   - CIR
   - NOAEL
   - Taiwan
-version: "0.5.0"
-date-released: "2026-08-30"
+version: "0.5.1"
+date-released: "2026-09-08"
 doi: "10.5281/zenodo.19994787"
 identifiers:
   - type: doi
@@ -70,7 +67,7 @@ preferred-citation:
       email: vincent.lin@baiyuan.com.tw
       affiliation: Baiyuan Tech
   year: 2026
-  month: 8
-  version: "0.5.0"
+  month: 9
+  version: "0.5.1"
   doi: "10.5281/zenodo.19994787"
   url: "https://doi.org/10.5281/zenodo.19994787"
